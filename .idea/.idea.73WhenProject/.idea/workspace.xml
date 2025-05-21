@@ -5,10 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6527717-c746-49d6-bdad-b1b51fe5d6f7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ModularFirstPersonController.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ModularFirstPersonController/FirstPersonController.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ModularFirstPersonController/FirstPersonController/CircleReticle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ModularFirstPersonController/FirstPersonController/CircleReticle.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ModularFirstPersonController/FirstPersonController/FirstPersonController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ModularFirstPersonController/FirstPersonController/FirstPersonController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ModularFirstPersonController/FirstPersonController/FirstPersonController.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ModularFirstPersonController/FirstPersonController/FirstPersonController.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ModularFirstPersonController/How To Use.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ModularFirstPersonController/How To Use.pdf.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scalable Grid Prototype Materials/Materials/1x1_checkerboard.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scalable Grid Prototype Materials/Materials/1x1_checkerboard.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scalable Grid Prototype Materials/Materials/1x1_grid.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scalable Grid Prototype Materials/Materials/1x1_grid.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scalable Grid Prototype Materials/Materials/1x1_grid_numbered.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scalable Grid Prototype Materials/Materials/1x1_grid_numbered.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scalable Grid Prototype Materials/Materials/1x1_grid_quarter_lines.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scalable Grid Prototype Materials/Materials/1x1_grid_quarter_lines.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scalable Grid Prototype Materials/Materials/1x1_grid_quarter_lines_numbered.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scalable Grid Prototype Materials/Materials/1x1_grid_quarter_lines_numbered.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scalable Grid Prototype Materials/Materials/prototype_normal.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scalable Grid Prototype Materials/Materials/prototype_normal.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/GameLogic.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/GameLogic.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.73WhenProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.73WhenProject/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,10 +43,10 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ml-agents@2.0.1/Runtime/Actuators/ActionSegment.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ml-agents@2.0.1/Runtime/Agent.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2xM3FpUJtCoYJnwikjeOB6ITWGu" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -36,7 +57,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "mlagents",
+    "git-widget-placeholder": "gamelogic",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -104,7 +125,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1747734014635</updated>
-      <workItem from="1747734016528" duration="5693000" />
+      <workItem from="1747734016528" duration="6345000" />
+      <workItem from="1747818910027" duration="85000" />
     </task>
     <servers />
   </component>
