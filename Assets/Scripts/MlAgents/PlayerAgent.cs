@@ -5,6 +5,11 @@ using Unity.MLAgents.Sensors;
 
 public class PlayerAgent : Agent
 {
+    [Header("References")]
+    [SerializeField] private Material winMaterial;
+    [SerializeField] private Material loseMaterial;
+    [SerializeField] private MeshRenderer floorMeshRenderer;
+    
     [Header("Environment")]
     public Transform patrolAgent;
     public Transform hideZone;
@@ -60,6 +65,7 @@ public class PlayerAgent : Agent
         else if (isHiding)
         {
             SetReward(1f); // successful hide
+            floorMeshRenderer.material = winMaterial;
             EndEpisode();
         }
         else
@@ -97,6 +103,12 @@ public class PlayerAgent : Agent
         {
             isHiding = true;
         }
+        if (other.TryGetComponent<Wall>(out Wall wall))
+        {
+            SetReward(-1f);
+            floorMeshRenderer.material = loseMaterial;
+            EndEpisode();
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -106,4 +118,5 @@ public class PlayerAgent : Agent
             isHiding = false;
         }
     }
+    
 }
