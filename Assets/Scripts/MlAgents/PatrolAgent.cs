@@ -6,6 +6,11 @@ using Unity.MLAgents.Sensors;
 
 public class PatrolAgent : Agent
 {
+    [Header("Environment")]
+    [SerializeField] private Material winMaterial;
+    [SerializeField] private Material loseMaterial;
+    [SerializeField] private MeshRenderer floorMeshRenderer;
+    
     [Header("References")]
     public Transform player;
     public LayerMask viewMask;
@@ -99,5 +104,21 @@ public class PatrolAgent : Agent
             }
         }
         return false;
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent<Goal>(out Goal goal))
+        {
+            SetReward(1f);
+            floorMeshRenderer.material = winMaterial;
+            EndEpisode();
+        }
+        if (other.TryGetComponent<Wall>(out Wall wall))
+        {
+            SetReward(-1f);
+            floorMeshRenderer.material = loseMaterial;
+            EndEpisode();
+        }
     }
 }

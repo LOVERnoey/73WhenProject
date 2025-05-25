@@ -1,0 +1,51 @@
+{
+    "MoveToGoal": {
+        "checkpoints": [
+            {
+                "steps": 8728,
+                "file_path": "results\\Partol1\\MoveToGoal\\MoveToGoal-8728.onnx",
+                "reward": -3.6431862366234147,
+                "creation_time": 1748165327.6305218,
+                "auxillary_file_paths": [
+                    "results\\Partol1\\MoveToGoal\\MoveToGoal-8728.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 8728,
+            "file_path": "results\\Partol1\\MoveToGoal.onnx",
+            "reward": -3.6431862366234147,
+            "creation_time": 1748165327.6305218,
+            "auxillary_file_paths": [
+                "results\\Partol1\\MoveToGoal\\MoveToGoal-8728.pt"
+            ]
+        }
+    },
+    "HideAndSeek": {
+        "checkpoints": [
+            {
+                "steps": 0,
+                "file_path": "results\\Partol1\\HideAndSeek\\HideAndSeek-0.onnx",
+                "reward": null,
+                "creation_time": 1748165327.6574225,
+                "auxillary_file_paths": [
+                    "results\\Partol1\\HideAndSeek\\HideAndSeek-0.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 0,
+            "file_path": "results\\Partol1\\HideAndSeek.onnx",
+            "reward": null,
+            "creation_time": 1748165327.6574225,
+            "auxillary_file_paths": [
+                "results\\Partol1\\HideAndSeek\\HideAndSeek-0.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.7.0+cpu"
+    }
+}
