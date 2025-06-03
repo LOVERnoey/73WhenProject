@@ -1,0 +1,75 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class InventoryReact : MonoBehaviour
+{
+    public FirstPersonController firstPersonController;
+    public GameObject inventoryUI;
+    public GameObject playerController; // ตัวที่มี script ควบคุมกล้อง/การเดิน
+    private bool isInventoryOpen = false;
+    public GameObject journalPanel;
+    public GameObject questItemPanel;
+    public GameObject itemPanel;
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            isInventoryOpen = !isInventoryOpen;
+            inventoryUI.SetActive(isInventoryOpen);
+
+            if (isInventoryOpen)
+            {
+                // ปลดล็อกเมาส์และหยุดเกม
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+
+                itemPanel.SetActive(true);
+                journalPanel.SetActive(false);
+                questItemPanel.SetActive(false);
+                
+                firstPersonController.cameraCanMove = false;
+                firstPersonController.playerCanMove = false;
+
+                Time.timeScale = 0f; // หยุดเวลา (optional)
+            }
+            else
+            {
+                // ล็อกเมาส์กลับและเปิดเกม
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+
+                firstPersonController.cameraCanMove = true;
+                firstPersonController.playerCanMove = true;
+
+                Time.timeScale = 1f;
+            }
+        }
+    }
+    
+    public void OpenJournalPanel()
+    {
+        CloseAllPanels();
+        journalPanel.SetActive(true);
+    }
+
+    public void OpenQuestItemPanel()
+    {
+        CloseAllPanels();
+        questItemPanel.SetActive(true);
+    }
+
+    public void OpenItemPanel()
+    {
+        CloseAllPanels();
+        itemPanel.SetActive(true);
+    }
+    
+    public void CloseAllPanels()
+    {
+        journalPanel.SetActive(false);
+        questItemPanel.SetActive(false);
+        itemPanel.SetActive(false);
+    }
+}
