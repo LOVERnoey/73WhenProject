@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b6527717-c746-49d6-bdad-b1b51fe5d6f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.73WhenProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.73WhenProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ML-Agents/Timers/MlAgents_timers.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ML-Agents/Timers/MlAgents_timers.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameLogic.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameLogic.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -110,6 +111,7 @@
       <workItem from="1748079872219" duration="1239000" />
       <workItem from="1748164637383" duration="374000" />
       <workItem from="1748871788219" duration="1874000" />
+      <workItem from="1748918807209" duration="1069000" />
     </task>
     <servers />
   </component>
