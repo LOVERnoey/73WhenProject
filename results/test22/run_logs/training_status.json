@@ -1,0 +1,29 @@
+{
+    "HideAndSeek": {
+        "checkpoints": [
+            {
+                "steps": 51401,
+                "file_path": "results\\test22\\HideAndSeek\\HideAndSeek-51401.onnx",
+                "reward": null,
+                "creation_time": 1749279403.6655078,
+                "auxillary_file_paths": [
+                    "results\\test22\\HideAndSeek\\HideAndSeek-51401.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 51401,
+            "file_path": "results\\test22\\HideAndSeek.onnx",
+            "reward": null,
+            "creation_time": 1749279403.6655078,
+            "auxillary_file_paths": [
+                "results\\test22\\HideAndSeek\\HideAndSeek-51401.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.7.0+cpu"
+    }
+}

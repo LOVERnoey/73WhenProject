@@ -235,6 +235,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnviromentPartol (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -291,6 +295,10 @@ PrefabInstance:
     - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
       propertyPath: m_Name
       value: EnviromentPartol (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -349,6 +357,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnviromentPartol (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -406,6 +418,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnviromentPartol (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -462,6 +478,10 @@ PrefabInstance:
     - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
       propertyPath: m_Name
       value: EnviromentPartol (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -612,6 +632,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnviromentPartol (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -625,6 +649,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 359335512851884075, guid: b2d6029cb9b2e9f4398633d4a800c829, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 705542579769325191, guid: b2d6029cb9b2e9f4398633d4a800c829, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.5
@@ -673,9 +701,29 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3128784553241929190, guid: b2d6029cb9b2e9f4398633d4a800c829, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764029552397556230, guid: b2d6029cb9b2e9f4398633d4a800c829, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5775759717105501811, guid: b2d6029cb9b2e9f4398633d4a800c829, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6058945230860693025, guid: b2d6029cb9b2e9f4398633d4a800c829, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6529054485847313610, guid: b2d6029cb9b2e9f4398633d4a800c829, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7251650984774308854, guid: b2d6029cb9b2e9f4398633d4a800c829, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -734,6 +782,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnviromentPartol (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -790,6 +842,10 @@ PrefabInstance:
     - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
       propertyPath: m_Name
       value: EnviromentPartol (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -848,6 +904,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnviromentPartol (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -904,6 +964,10 @@ PrefabInstance:
     - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
       propertyPath: m_Name
       value: EnviromentPartol (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -962,6 +1026,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnviromentPartol (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1018,6 +1086,10 @@ PrefabInstance:
     - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
       propertyPath: m_Name
       value: EnviromentPartol (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1076,6 +1148,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnviromentPartol (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1133,6 +1209,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnviromentPartol (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1189,6 +1269,10 @@ PrefabInstance:
     - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
       propertyPath: m_Name
       value: EnviromentPartol (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1463,6 +1547,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnviromentPartol (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1642,6 +1730,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnviromentPartol (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1698,6 +1790,10 @@ PrefabInstance:
     - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
       propertyPath: m_Name
       value: EnviromentPartol (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1848,6 +1944,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnviromentPartol (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1904,6 +2004,10 @@ PrefabInstance:
     - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
       propertyPath: m_Name
       value: EnviromentPartol (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1962,6 +2066,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnviromentPartol (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2018,6 +2126,10 @@ PrefabInstance:
     - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
       propertyPath: m_Name
       value: EnviromentPartol (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2136,6 +2248,10 @@ PrefabInstance:
     - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
       propertyPath: m_Name
       value: EnviromentPartol (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2376,6 +2492,10 @@ PrefabInstance:
     - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
       propertyPath: m_Name
       value: EnviromentPartol (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2677,6 +2797,10 @@ PrefabInstance:
     - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
       propertyPath: m_Name
       value: EnviromentPartol
+      objectReference: {fileID: 0}
+    - target: {fileID: 4852274324733056962, guid: 905b19216c2ff8f43a362349b0179d65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

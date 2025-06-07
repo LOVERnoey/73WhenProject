@@ -1,30 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    public ItemSlot[] itemSlots;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public ItemSlot[] generalSlots;
+    public ItemSlot[] journalSlots;
+    public ItemSlot[] questItemSlots;
 
-    // Update is called once per frame
-    void Update()
+    public void AddItem(string itemName, int quantity, Sprite itemIcon, ItemType itemType)
     {
-        
-    }
+        ItemSlot[] targetSlots = null;
 
-    public void AddItem(string itemName, int quantity, Sprite itemIcon)
-    {
-        for (int i = 0; i < itemSlots.Length; i++)
+        switch (itemType)
         {
-            if (!itemSlots[i].isFull)
+            case ItemType.General:
+                targetSlots = generalSlots;
+                break;
+            case ItemType.Journal:
+                targetSlots = journalSlots;
+                break;
+            case ItemType.QuestItem:
+                targetSlots = questItemSlots;
+                break;
+        }
+
+        if (targetSlots != null)
+        {
+            foreach (ItemSlot slot in targetSlots)
             {
-                itemSlots[i].AddItem(itemName, quantity, itemIcon);
-                return; // หยุดการค้นหาเมื่อเจอช่องว่าง
+                if (!slot.isFull)
+                {
+                    slot.AddItem(itemName, quantity, itemIcon);
+                    return;
+                }
             }
         }
     }
