@@ -2,37 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ItemType
+{
+    General,
+    Journal,
+    QuestItem
+}
+
 public class Item : MonoBehaviour
 {
     [SerializeField]
     private string itemName;
-    
+
     [SerializeField]
     private int quantity;
-    
+
     [SerializeField]
     private Sprite itemIcon;
-    
+
+    [SerializeField]
+    private ItemType itemType; // เลือกประเภทของ item จาก Inspector
+
     private bool isPlayerLooking = false;
-    
+
     private InventoryManager inventoryManager;
-    // Start is called before the first frame update
+
     void Start()
     {
         inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (isPlayerLooking && Input.GetKeyDown(KeyCode.F))
         {
-            inventoryManager.AddItem(itemName, quantity, itemIcon); // ต้องมีฟังก์ชันนี้ใน InventoryManager
-            Destroy(gameObject); // เก็บแล้วลบออกจากฉาก
+            inventoryManager.AddItem(itemName, quantity, itemIcon, itemType);
+            Destroy(gameObject);
         }
     }
-    
-    
+
     public void SetPlayerLooking(bool looking)
     {
         isPlayerLooking = looking;
