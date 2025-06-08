@@ -29,8 +29,9 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
     }
 
-    public void AddItem(string itemName, int quantity, Sprite itemIcon, string itemDescription)
+    public void AddItem(string itemName, int quantity, Sprite itemIcon)
     {
+        Debug.Log($"Slot {gameObject.name} receives {itemName} x{quantity}");
         this.itemName = itemName;
         this.quantity += quantity;
         this.itemIcon = itemIcon;
