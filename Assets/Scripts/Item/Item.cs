@@ -19,7 +19,10 @@ public class Item : MonoBehaviour
 
     [SerializeField]
     private Sprite itemIcon;
-
+    [TextArea]
+    [SerializeField]
+    private string itemDescription;
+    
     [SerializeField]
     private ItemType itemType; // เลือกประเภทของ item จาก Inspector
 
@@ -36,7 +39,7 @@ public class Item : MonoBehaviour
     {
         if (isPlayerLooking && Input.GetKeyDown(KeyCode.F))
         {
-            inventoryManager.AddItem(itemName, quantity, itemIcon, itemType);
+            inventoryManager.AddItem(itemName, quantity, itemIcon, itemType, itemDescription);
             Destroy(gameObject);
         }
     }
