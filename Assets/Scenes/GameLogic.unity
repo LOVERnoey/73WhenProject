@@ -11859,6 +11859,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemSlot
       objectReference: {fileID: 0}
+    - target: {fileID: 5821045501219039699, guid: 626c1c508dd412144bc9811111d370d5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6708506193259942824, guid: 626c1c508dd412144bc9811111d370d5, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6708506193259942824, guid: 626c1c508dd412144bc9811111d370d5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 6776248934454119374, guid: 626c1c508dd412144bc9811111d370d5, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776248934454119374, guid: 626c1c508dd412144bc9811111d370d5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 44fe90936dac86a40b6998118c4a7c23, type: 3}
+    - target: {fileID: 6776248934454119374, guid: 626c1c508dd412144bc9811111d370d5, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776248934454119374, guid: 626c1c508dd412144bc9811111d370d5, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776248934454119374, guid: 626c1c508dd412144bc9811111d370d5, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776248934454119374, guid: 626c1c508dd412144bc9811111d370d5, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7435551698007688057, guid: 626c1c508dd412144bc9811111d370d5, type: 3}
       propertyPath: ItemDescriptionText
       value: 
@@ -12279,67 +12315,67 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generalSlots:
   - {fileID: 8336869471262818172}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2024640276}
+  - {fileID: 685485219}
+  - {fileID: 1787097063}
+  - {fileID: 223662330}
+  - {fileID: 1252217005}
+  - {fileID: 1497594842}
+  - {fileID: 327063843}
+  - {fileID: 788347315}
+  - {fileID: 1290531609}
+  - {fileID: 831487778}
+  - {fileID: 1021328343}
+  - {fileID: 80529183}
+  - {fileID: 2143308590}
+  - {fileID: 1642955241}
+  - {fileID: 898740396}
+  - {fileID: 1318501422}
+  - {fileID: 1146834200}
+  - {fileID: 1758961653}
+  - {fileID: 1450549564}
   journalSlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 738930365}
+  - {fileID: 1821515967}
+  - {fileID: 1320517404}
+  - {fileID: 2057494238}
+  - {fileID: 1307542569}
+  - {fileID: 1117524779}
+  - {fileID: 2092067745}
+  - {fileID: 1547060085}
+  - {fileID: 1550069558}
+  - {fileID: 1175961370}
+  - {fileID: 1648145973}
+  - {fileID: 475559880}
+  - {fileID: 1518718346}
+  - {fileID: 2064042812}
+  - {fileID: 1698017562}
+  - {fileID: 1145103007}
+  - {fileID: 1651274577}
+  - {fileID: 1304656199}
+  - {fileID: 2085087023}
+  - {fileID: 285319295}
   questItemSlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1792623727}
+  - {fileID: 1816098355}
+  - {fileID: 569056497}
+  - {fileID: 2077462173}
+  - {fileID: 1168419052}
+  - {fileID: 1855989959}
+  - {fileID: 828205046}
+  - {fileID: 1137122615}
+  - {fileID: 2051052862}
+  - {fileID: 1524079558}
+  - {fileID: 1645968503}
+  - {fileID: 1130238825}
+  - {fileID: 1357510227}
+  - {fileID: 979216912}
+  - {fileID: 1465342194}
+  - {fileID: 1922059316}
+  - {fileID: 1225768674}
+  - {fileID: 817112445}
+  - {fileID: 2105663844}
+  - {fileID: 2058531286}
 --- !u!222 &5956879708729509085
 CanvasRenderer:
   m_ObjectHideFlags: 0

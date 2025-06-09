@@ -39,11 +39,9 @@ public class Item : MonoBehaviour
     {
         if (isPlayerLooking && Input.GetKeyDown(KeyCode.F))
         {
-            Debug.Log($"Adding {itemName} x{quantity} to inventory as {itemType}");
-            inventoryManager.AddItem(itemName, quantity, itemIcon, itemType);
+            inventoryManager.AddItem(itemName, quantity, itemIcon, itemType, itemDescription);
             Destroy(gameObject);
         }
-        
     }
 
     public void SetPlayerLooking(bool looking)
