@@ -6,7 +6,7 @@ public class InventoryManager : MonoBehaviour
     public ItemSlot[] journalSlots;
     public ItemSlot[] questItemSlots;
 
-    public void AddItem(string itemName, int quantity, Sprite itemIcon, ItemType itemType)
+    public void AddItem(string itemName, int quantity, Sprite itemIcon, ItemType itemType, string itemDescription)
     {
         ItemSlot[] targetSlots = null;
 
@@ -29,30 +29,37 @@ public class InventoryManager : MonoBehaviour
             {
                 if (!slot.isFull)
                 {
-                    slot.AddItem(itemName, quantity, itemIcon);
+                    slot.AddItem(itemName, quantity, itemIcon, itemDescription);
                     return;
                 }
             }
         }
         
     }
+    
     public void DeselectAllSlots()
     {
-        DeselectSlotArray(generalSlots);
-        DeselectSlotArray(journalSlots);
-        DeselectSlotArray(questItemSlots);
-    }
-
-    private void DeselectSlotArray(ItemSlot[] slots)
-    {
-        if (slots == null) return;
-
-        foreach (ItemSlot slot in slots)
+        // Deselect general slots
+        foreach (ItemSlot slot in generalSlots)
         {
-            if (slot == null) continue;
-            if (slot.selectedShader != null)
-                slot.selectedShader.SetActive(false);
+            slot.selectedShader.SetActive(false);
+            slot.isSelected = false;
+        }
+
+        // Deselect journal slots
+        foreach (ItemSlot slot in journalSlots)
+        {
+            slot.selectedShader.SetActive(false);
+            slot.isSelected = false;
+        }
+
+        // Deselect quest item slots
+        foreach (ItemSlot slot in questItemSlots)
+        {
+            slot.selectedShader.SetActive(false);
             slot.isSelected = false;
         }
     }
+
+    
 }
