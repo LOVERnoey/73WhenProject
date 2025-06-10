@@ -227,10 +227,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: 
   quantity: 0
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: dbd9ec76c46325946bbb6d237cea5ab4, type: 3}
   isFull: 0
+  itemDescription: 
+  emptySprite: {fileID: 0}
   quantityText: {fileID: 1197460609488418157}
   itemIconImage: {fileID: 6776248934454119374}
+  itemDescriptionImage: {fileID: 0}
+  itemDescriptionNameText: {fileID: 0}
+  itemDescriptionText: {fileID: 0}
   selectedShader: {fileID: 8206680231412925794}
   isSelected: 0
 --- !u!1 &5821045501219039699

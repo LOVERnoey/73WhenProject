@@ -11,13 +11,14 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public Sprite itemIcon;
     public bool isFull;
     public string itemDescription;
+    public Sprite emptySprite;
 
     [SerializeField] private TMP_Text quantityText;
     [SerializeField] private Image itemIconImage;
 
-    public Image ItemDescriptionImage;
-    public TMP_Text ItemDescriptionNameText;
-    public TMP_Text ItemDescriptionText;
+    public Image itemDescriptionImage;
+    public TMP_Text itemDescriptionNameText;
+    public TMP_Text itemDescriptionText;
     
     public GameObject selectedShader;
     public bool isSelected;
@@ -59,9 +60,13 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         inventoryManager.DeselectAllSlots();
         selectedShader.SetActive(true);
         isSelected = true;
-        ItemDescriptionNameText.text = itemName;
-        ItemDescriptionText.text = itemDescription;
-        ItemDescriptionImage.sprite = itemIcon;
+        itemDescriptionNameText.text = itemName;
+        itemDescriptionText.text = itemDescription;
+        itemDescriptionImage.sprite = itemIcon;
+        if (itemDescriptionImage.sprite == null)
+        {
+            itemDescriptionImage.sprite = emptySprite;
+        }
     }
     
     public void OnRightClick()
