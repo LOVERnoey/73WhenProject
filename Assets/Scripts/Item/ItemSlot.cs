@@ -30,17 +30,39 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
     }
 
-    public void AddItem(string itemName, int quantity, Sprite itemIcon, string itemDescription)
+    public int AddItem(string itemName, int quantity, Sprite itemIcon, string itemDescription, int maxStack = 99)
     {
-        this.itemName = itemName;
-        this.quantity += quantity;
-        this.itemIcon = itemIcon;
-        this.itemDescription = itemDescription;
-        isFull = true;
+        // เงื่อนไข: ช่องว่าง หรือ ช่องเดิมที่ชื่อ item เดียวกัน
+        if (string.IsNullOrEmpty(this.itemName) || this.itemName == itemName)
+        {
+            this.itemName = itemName;
+            this.itemIcon = itemIcon;
+            this.itemDescription = itemDescription;
 
-        quantityText.text = this.quantity.ToString();
-        quantityText.enabled = true;
-        itemIconImage.sprite = itemIcon;
+            int total = this.quantity + quantity;
+
+            if (total <= maxStack)
+            {
+                this.quantity = total;
+                isFull = (this.quantity == maxStack);
+                quantityText.text = this.quantity.ToString();
+                quantityText.enabled = true;
+                itemIconImage.sprite = itemIcon;
+                return 0; // ไม่เหลือ
+            }
+            else
+            {
+                this.quantity = maxStack;
+                isFull = true;
+                quantityText.text = this.quantity.ToString();
+                quantityText.enabled = true;
+                itemIconImage.sprite = itemIcon;
+                return total - maxStack; // จำนวนที่ยังเหลือ
+            }
+        }
+
+        // ถ้าไม่ใช่ item เดียวกันเลย (ไม่ควรมาเรียก method นี้)
+        return quantity;
     }
 
     public void OnPointerClick(PointerEventData eventData)
