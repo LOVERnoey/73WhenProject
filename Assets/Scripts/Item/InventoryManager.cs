@@ -25,6 +25,20 @@ public class InventoryManager : MonoBehaviour
 
         if (targetSlots != null)
         {
+            // STEP 1: Stack to existing slot with same item
+            for (int i = 0; i < targetSlots.Length; i++)
+            {
+                if (targetSlots[i].isFull && targetSlots[i].itemName == itemName)
+                {
+                    int leftOver = targetSlots[i].AddItem(itemName, quantity, itemIcon, itemDescription);
+                    if (leftOver <= 0)
+                        return;
+                    else
+                        quantity = leftOver;
+                }
+            }
+
+            // STEP 2: Add to empty slot
             foreach (ItemSlot slot in targetSlots)
             {
                 if (!slot.isFull)
@@ -34,7 +48,6 @@ public class InventoryManager : MonoBehaviour
                 }
             }
         }
-        
     }
     
     public void DeselectAllSlots()
