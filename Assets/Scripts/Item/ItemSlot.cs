@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -79,18 +80,57 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     public void OnLeftClick()
     {
-        inventoryManager.DeselectAllSlots();
-        selectedShader.SetActive(true);
-        isSelected = true;
-        itemDescriptionNameText.text = itemName;
-        itemDescriptionText.text = itemDescription;
-        itemDescriptionImage.sprite = itemIcon;
-        if (itemDescriptionImage.sprite == null)
+        if (isSelected)
         {
-            itemDescriptionImage.sprite = emptySprite;
+            bool usable = inventoryManager.UseItem(this.itemName);
+            if (usable)
+            {
+                this.quantity -= 1;
+                quantityText.text = this.quantity.ToString();
+                if (this.quantity <= 0)
+                    EmptySlot();
+            }
+
         }
+
+        else
+        {
+            if (string.IsNullOrEmpty(itemName))
+                return; // ป้องกัน ghost slot
+            inventoryManager.DeselectAllSlots();
+            selectedShader.SetActive(true);
+            isSelected = true;
+            itemDescriptionNameText.text = itemName;
+            itemDescriptionText.text = itemDescription;
+            itemDescriptionImage.sprite = itemIcon;
+            if (itemDescriptionImage.sprite == null)
+            {
+                itemDescriptionImage.sprite = emptySprite;
+            }
+        }
+
     }
-    
+
+    private void EmptySlot()
+    {
+        quantity = 0;
+        itemName = "";
+        itemDescription = "";
+        itemIcon = null;
+        isFull = false;
+        isSelected = false;
+
+        quantityText.enabled = false;
+        quantityText.text = "";
+        itemIconImage.sprite = emptySprite;
+
+        itemDescriptionNameText.text = "";
+        itemDescriptionText.text = "";
+        itemDescriptionImage.sprite = emptySprite;
+
+        selectedShader.SetActive(false);
+    }
+
     public void OnRightClick()
     {
     }
