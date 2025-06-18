@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
@@ -6,6 +7,8 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
+    public GameObject menu;
+    public AudioClip healSoundFX;
 
     [SerializeField] private TMP_Text healthText;
 
@@ -15,11 +18,23 @@ public class PlayerHealth : MonoBehaviour
         UpdateHealthUI();
     }
 
+    public void Update()
+    {
+        if (menu.activeSelf)
+        {
+            healthText.text = "";
+        }
+        else
+        {
+            healthText.text = currentHealth + " / " + maxHealth;
+        }
+    }
+
     public void ChangeHealth(int amount)
     {
         currentHealth += amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-
+        SoundFXManager.instance.PlaySoundFXClip(healSoundFX, transform, 1f);
         UpdateHealthUI();
 
         if (currentHealth <= 0)

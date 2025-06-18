@@ -11,39 +11,89 @@ public class InventoryReact : MonoBehaviour
     public GameObject journalPanel;
     public GameObject questItemPanel;
     public GameObject itemPanel;
+    public GameObject menu;
+    public List<GameObject> disableThings;
+    public List<GameObject> enableThings;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            isInventoryOpen = !isInventoryOpen;
-            inventoryUI.SetActive(isInventoryOpen);
-
-            if (isInventoryOpen)
+            if (menu.activeSelf)
             {
-                // ปลดล็อกเมาส์และหยุดเกม
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-
-                itemPanel.SetActive(true);
-                journalPanel.SetActive(false);
-                questItemPanel.SetActive(false);
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                menu.SetActive(false);
+                firstPersonController.cameraCanMove = true;
+                firstPersonController.playerCanMove = true;
+                foreach (GameObject obj in enableThings)
+                {
+                    obj.SetActive(true);
+                }
                 
-                firstPersonController.cameraCanMove = false;
-                firstPersonController.playerCanMove = false;
-
-                Time.timeScale = 0f; // หยุดเวลา (optional)
+                Time.timeScale = 1f;
             }
             else
             {
-                // ล็อกเมาส์กลับและเปิดเกม
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                menu.SetActive(true);
+                firstPersonController.cameraCanMove = false;
+                firstPersonController.playerCanMove = false;
+                inventoryUI.SetActive(false);
+                foreach (GameObject obj in disableThings)
+                {
+                    obj.SetActive(false);
+                }
 
-                firstPersonController.cameraCanMove = true;
-                firstPersonController.playerCanMove = true;
+                Time.timeScale = 0f; // หยุดเวลา (optional)
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (menu.activeSelf)
+            {
+                return;
+            }
+            else
+            {
+                isInventoryOpen = !isInventoryOpen;
+                inventoryUI.SetActive(isInventoryOpen);
 
-                Time.timeScale = 1f;
+                if (isInventoryOpen)
+                {
+                    // ปลดล็อกเมาส์และหยุดเกม
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+
+                    itemPanel.SetActive(true);
+                    journalPanel.SetActive(false);
+                    questItemPanel.SetActive(false);
+                
+                    firstPersonController.cameraCanMove = false;
+                    firstPersonController.playerCanMove = false;
+                    foreach (GameObject obj in disableThings)
+                    {
+                        obj.SetActive(false);
+                    }
+                    
+                    Time.timeScale = 0f; // หยุดเวลา (optional)
+                }
+                else
+                {
+                    // ล็อกเมาส์กลับและเปิดเกม
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+
+                    firstPersonController.cameraCanMove = true;
+                    firstPersonController.playerCanMove = true;
+                    foreach (GameObject obj in enableThings)
+                    {
+                        obj.SetActive(true);
+                    }
+                    
+                    Time.timeScale = 1f;
+                }   
             }
         }
     }
