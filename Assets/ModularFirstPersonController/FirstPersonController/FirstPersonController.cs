@@ -129,8 +129,12 @@ public class FirstPersonController : MonoBehaviour
     private Vector3 jointOriginalPos;
     private float timer = 0;
 
+    public AudioClip footstepSound;
+    [SerializeField] private float stepInterval = 0.5f;
+    private float stepTimer;
     #endregion
-
+    
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -151,6 +155,7 @@ public class FirstPersonController : MonoBehaviour
 
     void Start()
     {
+        
         if(lockCursor)
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -735,6 +740,26 @@ public class FirstPersonController : MonoBehaviour
             Undo.RecordObject(fpc, "FPC Change");
             SerFPC.ApplyModifiedProperties();
         }
+        
+        #region Footstep
+
+        EditorGUILayout.Space();
+        GUILayout.Label("Footstep Sounds", new GUIStyle(GUI.skin.label)
+        {
+            alignment = TextAnchor.MiddleLeft,
+            fontStyle = FontStyle.Bold,
+            fontSize = 13
+        }, GUILayout.ExpandWidth(true));
+
+        fpc.footstepSound = (AudioClip)EditorGUILayout.ObjectField(
+            new GUIContent("Footstep Sound", "AudioClip that plays during footstep."),
+            fpc.footstepSound,
+            typeof(AudioClip),
+            false
+        );
+        
+
+        #endregion
     }
 
 }
