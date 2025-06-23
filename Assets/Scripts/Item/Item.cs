@@ -29,6 +29,8 @@ public class Item : MonoBehaviour
     private bool isPlayerLooking = false;
 
     private InventoryManager inventoryManager;
+    
+    public AudioClip pickupSoundFX;
 
     void Start()
     {
@@ -39,6 +41,7 @@ public class Item : MonoBehaviour
     {
         if (isPlayerLooking && Input.GetKeyDown(KeyCode.F))
         {
+            SoundFXManager.instance.PlaySoundFXClip(pickupSoundFX, transform, 1f);
             inventoryManager.AddItem(itemName, quantity, itemIcon, itemType, itemDescription);
             Destroy(gameObject);
         }
