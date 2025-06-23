@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b6527717-c746-49d6-bdad-b1b51fe5d6f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.73WhenProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.73WhenProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SoundFXObject.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/SoundFXObject.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameLogic.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameLogic.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu/Inventory/InventoryReact.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu/Inventory/InventoryReact.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Item/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Item/Item.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Sound/SoundMixerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Sound/SoundMixerManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +131,7 @@
       <workItem from="1750153069803" duration="842000" />
       <workItem from="1750160939242" duration="3559000" />
       <workItem from="1750222228101" duration="11945000" />
-      <workItem from="1750662372205" duration="4564000" />
+      <workItem from="1750662372205" duration="8904000" />
     </task>
     <servers />
   </component>

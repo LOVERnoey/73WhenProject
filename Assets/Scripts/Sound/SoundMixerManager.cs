@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,19 +8,19 @@ public class SoundMixerManager : MonoBehaviour
 {
     [SerializeField] private AudioMixer audioMixer;
     
-    public void SetMasterVolume(float volume)
+    public void SetMasterVolume(float level)
     {
-        audioMixer.SetFloat("masterVolume", volume);
+        audioMixer.SetFloat("masterVolume", Mathf.Log10(level) * 20f);
     }
     
-    public void SetSoundFXVolume(float volume)
+    public void SetSoundFXVolume(float level)
     {
-        audioMixer.SetFloat("soundFXVolume", volume);
+        audioMixer.SetFloat("soundFXVolume", Mathf.Log10(level) * 20f);
     }
     
-    public void SetMusicVolume(float volume)
+    public void SetMusicVolume(float level)
     {
-        audioMixer.SetFloat("musicVolume", volume);
+        audioMixer.SetFloat("musicVolume", Mathf.Log10(level) * 20f);
     }
     
     
