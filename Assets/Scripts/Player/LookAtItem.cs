@@ -5,33 +5,44 @@ public class LookAtItem : MonoBehaviour
 {
     [SerializeField] private float maxDistance = 3f;
     [SerializeField] private GameObject fPromptUI; // UI ปุ่ม F เช่น Text “Press F to pick up”
-
+    public GameObject menu;
+    public GameObject inventory;
+    
     private Item currentItem;
 
     void Update()
     {
-        Ray ray = new Ray(transform.position, transform.forward);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, maxDistance))
+        if (menu.activeSelf || inventory.activeSelf)
         {
-            Item item = hit.collider.GetComponent<Item>();
+            HidePrompt();
+            return;
+        }
+        else
+        {
+            Ray ray = new Ray(transform.position, transform.forward);
+            RaycastHit hit;
 
-            if (item != null)
+            if (Physics.Raycast(ray, out hit, maxDistance))
             {
-                fPromptUI.SetActive(true);
-                item.SetPlayerLooking(true);
-                currentItem = item;
+                Item item = hit.collider.GetComponent<Item>();
+
+                if (item != null)
+                {
+                    fPromptUI.SetActive(true);
+                    item.SetPlayerLooking(true);
+                    currentItem = item;
+                }
+                else
+                {
+                    HidePrompt();
+                }
             }
             else
             {
                 HidePrompt();
             }
         }
-        else
-        {
-            HidePrompt();
-        }
+
     }
 
     void HidePrompt()
