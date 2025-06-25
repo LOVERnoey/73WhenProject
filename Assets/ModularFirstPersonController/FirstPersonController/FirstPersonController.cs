@@ -207,6 +207,10 @@ public class FirstPersonController : MonoBehaviour
 
     private void Update()
     {
+        if (DialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            return;
+        }
         #region Camera
 
         // Control camera movement
@@ -373,6 +377,10 @@ public class FirstPersonController : MonoBehaviour
     {
         #region Movement
 
+        if (DialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            return;
+        }
         if (playerCanMove)
         {
             // Calculate how fast we should be moving
