@@ -4300,7 +4300,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 429915100}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1753092642}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: MakeChoice
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &429915100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18835,7 +18847,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1730646732}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1753092642}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: MakeChoice
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1730646732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19055,6 +19079,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguePanel: {fileID: 1311390406}
   dialogueText: {fileID: 1461813366}
+  choices:
+  - {fileID: 1730646729}
+  - {fileID: 429915097}
+  - {fileID: 1908123123}
 --- !u!4 &1753092643
 Transform:
   m_ObjectHideFlags: 0
@@ -20824,7 +20852,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1908123126}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1753092642}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: MakeChoice
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1908123126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21338,7 +21378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualCue: {fileID: 2137128183}
-  inkJson: {fileID: 4900000, guid: 79f48ac9af70cb645b65c54e9749cc3d, type: 3}
+  inkJSON: {fileID: 4900000, guid: f670002b05ee72049a84db6f75177974, type: 3}
 --- !u!65 &1939803835
 BoxCollider:
   m_ObjectHideFlags: 0

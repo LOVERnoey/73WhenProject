@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using TMPro;
 using Ink.Runtime;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class DialogueManager : MonoBehaviour
 {
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TextMeshProUGUI dialogueText;
+    
+    [Header("Choices UI")]
+    [SerializeField] private GameObject[] choices;
+    private TextMeshProUGUI[] choicesText;
     
     private Story currentStory;
     
@@ -34,6 +39,15 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
+        
+        choicesText = new TextMeshProUGUI[choices.Length];
+        int index = 0;
+        foreach (GameObject choice in choices)
+        {
+            choicesText[index] = choice.GetComponentInChildren<TextMeshProUGUI>();
+
+            index++;
+        }
     }
 
     private void Update()
@@ -54,6 +68,8 @@ public class DialogueManager : MonoBehaviour
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
         ContinueStory();
     }
@@ -65,6 +81,8 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     
     private void ContinueStory()
@@ -72,11 +90,41 @@ public class DialogueManager : MonoBehaviour
         if (currentStory.canContinue)
         {
             dialogueText.text = currentStory.Continue();
+            DisplayChoices();
         }
         else
         {
             StartCoroutine(ExitDialogueMode());
         }
+    }
+    
+    private void DisplayChoices()
+    {
+        List<Choice> currentChoices = currentStory.currentChoices;
+        
+        if (currentChoices.Count > choices.Length)
+        {
+            Debug.LogWarning("Not enough choice UI elements to display all choices.");
+        }
+
+        int index = 0;
+
+        foreach (Choice choice in currentChoices)
+        {
+            choices[index].gameObject.SetActive(true);
+            choicesText[index].text = choice.text;
+            index++;
+        }
+        
+        for (int i = index; i < choices.Length; i++)
+        {
+            choices[i].gameObject.SetActive(false);
+        }
+    }
+    
+    public void MakeChoice(int choiceIndex)
+    {
+        currentStory.ChooseChoiceIndex(choiceIndex);
     }
     
 }
