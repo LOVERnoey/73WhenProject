@@ -5,12 +5,16 @@ using Ink.Runtime;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.PlayerLoop;
+using Ink.UnityIntegration;
 
 public class DialogueManager : MonoBehaviour
 {
     [Header("Params")]
     [SerializeField] private float typingSpeed = 0.02f;
     [SerializeField] private bool canContinueLine = false;
+    
+    [Header("Globals Ink File")]
+    [SerializeField] private InkFile globalsInkFile;
     
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
@@ -32,6 +36,8 @@ public class DialogueManager : MonoBehaviour
 
     private const string SPEAKER_TAG = "speaker";
     
+    private DialogueVariables dialogueVariables;
+    
     private void Awake()
     {
         if (instance != null)
@@ -39,6 +45,8 @@ public class DialogueManager : MonoBehaviour
             Debug.LogWarning("More than one instance of DialogueManager");
         }
         instance = this;
+        
+        dialogueVariables = new DialogueVariables(globalsInkFile.filePath);
     }
 
     public static DialogueManager GetInstance()
@@ -79,6 +87,9 @@ public class DialogueManager : MonoBehaviour
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
+        
+        dialogueVariables.StartListening(currentStory);
+        
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         
@@ -91,6 +102,7 @@ public class DialogueManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         
+        dialogueVariables.StopListening(currentStory);
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";

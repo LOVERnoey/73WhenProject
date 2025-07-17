@@ -1,3 +1,7 @@
+INCLUDE globals.ink
+
+{ how == "": -> main | -> already_chose }
+
 -> main
 
 === main ===
@@ -12,5 +16,10 @@ How are you to day bitch?
 
 
 === chosen(How) ===
+~ how = How
 You chose {How}!
+-> END
+
+=== already_chose ===
+You already chose {how}!
 -> END
