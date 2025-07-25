@@ -14,7 +14,7 @@ using UnityEngine.UI;
     using System.Net;
 #endif
 
-public class FirstPersonController : MonoBehaviour
+public class FirstPersonController : MonoBehaviour, IDataPersistence
 {
     private Rigidbody rb;
 
@@ -203,6 +203,16 @@ public class FirstPersonController : MonoBehaviour
         #endregion
     }
 
+    public void LoadData(GameData data)
+    {
+        this.transform.position = data.playerPosition;
+    }
+    
+    public void SaveData(ref GameData data)
+    {
+        data.playerPosition = this.transform.position;
+    }
+    
     float camRotation;
 
     private void Update()
