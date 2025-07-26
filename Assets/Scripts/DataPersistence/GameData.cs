@@ -11,6 +11,7 @@ public class GameData
     
     public SerializableDictionary<string, bool>  itemsCollected;
 
+    
     public GameData()
     {
         this.countTest = 0;
