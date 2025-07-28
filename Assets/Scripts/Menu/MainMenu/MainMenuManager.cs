@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
+    [Header("Menu Buttons")]
+    [SerializeField] private Button newGameButton;
+    [SerializeField] private Button continueGameButton; 
+    
     [SerializeField]
     public GameObject mainMenuPanel;
     public GameObject settingPanel;
@@ -13,6 +19,17 @@ public class MainMenuManager : MonoBehaviour
         
     }
 
+    public void OnNewGameClicked()
+    {
+        DataPersistenceManager.instance.NewGame();
+        SceneManager.LoadSceneAsync("SaveLoad2");
+    }
+    
+    public void OnLoadGameClicked()
+    {
+        SceneManager.LoadSceneAsync("SaveLoad2");
+    }
+    
     // Update is called once per frame
     void Update()
     {
