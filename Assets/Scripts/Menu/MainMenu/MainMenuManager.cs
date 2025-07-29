@@ -11,12 +11,15 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private Button continueGameButton; 
     
     [SerializeField]
-    public GameObject mainMenuPanel;
-    public GameObject settingPanel;
+    public GameObject mainButtonPanel;
+    public GameObject saveSlotsPanel;
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (!DataPersistenceManager.instance.HasGameData())
+        {
+            continueGameButton.interactable = false;
+        }
     }
 
     public void OnNewGameClicked()
@@ -35,9 +38,9 @@ public class MainMenuManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (settingPanel.activeSelf)
+            if (saveSlotsPanel.activeSelf)
             {
-                settingPanel.SetActive(false);
+                saveSlotsPanel.SetActive(false);
             }
             else
             {

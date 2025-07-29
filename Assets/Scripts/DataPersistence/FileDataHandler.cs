@@ -19,9 +19,9 @@ public class FileDataHandler
         this.useEncryption = useEncryption;
     }
 
-    public GameData Load()
+    public GameData Load(string profileId)
     {
-        string fullPath = Path.Combine(dataDirPath, dataFileName);
+        string fullPath = Path.Combine(dataDirPath, profileId, dataFileName);
         GameData loadedData = null;
         if (File.Exists(fullPath))
         {
@@ -51,9 +51,9 @@ public class FileDataHandler
         return loadedData;
     }
 
-    public void Save(GameData data)
+    public void Save(GameData data, string profileId)
     {
-        string fullPath = Path.Combine(dataDirPath, dataFileName);
+        string fullPath = Path.Combine(dataDirPath, profileId, dataFileName);
         try
         {
             Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
@@ -77,6 +77,37 @@ public class FileDataHandler
         {
             Debug.LogError("Error occurred while creating directory: " + fullPath + "\n" + e);
         }
+    }
+
+    public Dictionary<string, GameData> LoadAllProfiles()
+    {
+        Dictionary<string, GameData> profileDictionary = new Dictionary<string, GameData>();
+        
+        IEnumerable<DirectoryInfo> dirInfos = new DirectoryInfo(dataDirPath).EnumerateDirectories();
+        foreach (DirectoryInfo dirInfo in dirInfos)
+        {
+            string profileId = dirInfo.Name;
+            
+            string fullPath = Path.Combine(dataDirPath, profileId, dataFileName);
+            if (!File.Exists(fullPath))
+            {
+                Debug.LogWarning("No save file found for profile: " + profileId);
+                continue;
+            }
+            
+            GameData profileDate = Load(profileId);
+
+            if (profileDate != null)
+            {
+                profileDictionary.Add(profileId, profileDate);
+            }
+            else
+            {
+                Debug.LogWarning("No save file found for profile: " + profileId);
+            }
+        }
+        
+        return profileDictionary;
     }
     
     private string EncryptDecrypt(string data)
