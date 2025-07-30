@@ -4,25 +4,29 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MainMenuManager : MonoBehaviour
+public class MainMenuManager : Menu
 {
     [Header("Menu Buttons")]
     [SerializeField] private Button newGameButton;
     [SerializeField] private Button continueGameButton; 
     
-    [SerializeField]
-    public GameObject mainMenuPanel;
-    public GameObject settingPanel;
+    [SerializeField] private GameObject mainButtonPanel;
+    [SerializeField] private GameObject saveSlotsPanel;
+    
+    [SerializeField] private SaveSlotsMenu saveSlotsMenu;
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (!DataPersistenceManager.instance.HasGameData())
+        {
+            continueGameButton.interactable = false;
+        }
     }
 
     public void OnNewGameClicked()
     {
-        DataPersistenceManager.instance.NewGame();
-        SceneManager.LoadSceneAsync("SaveLoad2");
+        saveSlotsMenu.ActivateMenu();
+        mainButtonPanel.SetActive(false);
     }
     
     public void OnLoadGameClicked()
@@ -35,9 +39,10 @@ public class MainMenuManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (settingPanel.activeSelf)
+            if (saveSlotsPanel.activeSelf)
             {
-                settingPanel.SetActive(false);
+                saveSlotsPanel.SetActive(false);
+                mainButtonPanel.SetActive(true);
             }
             else
             {
@@ -45,4 +50,5 @@ public class MainMenuManager : MonoBehaviour
             }
         }
     }
+
 }
