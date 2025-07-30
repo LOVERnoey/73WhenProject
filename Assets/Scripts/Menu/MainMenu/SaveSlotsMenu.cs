@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class SaveSlotsMenu : MonoBehaviour
+public class SaveSlotsMenu : Menu
 {
     private SaveSlot[] saveSlots;
 
@@ -12,13 +13,19 @@ public class SaveSlotsMenu : MonoBehaviour
         saveSlots = this.GetComponentsInChildren<SaveSlot>();
     }
 
-    public void Start()
+    public void OnSaveSlotClicked(SaveSlot saveSlot)
     {
-        ActivateMenu();
-    }
+        DataPersistenceManager.instance.ChangeSelectedProfileId(saveSlot.GetProfileId());
+        
+        DataPersistenceManager.instance.NewGame();
 
+        SceneManager.LoadSceneAsync("SaveLoad2");
+    }
+    
     public void ActivateMenu()
     {
+        this.gameObject.SetActive(true);
+        
         Dictionary<string, GameData> profilesGameData = DataPersistenceManager.instance.GetAllProfilesGameData();
 
         foreach (SaveSlot saveSlot in saveSlots)
@@ -26,6 +33,19 @@ public class SaveSlotsMenu : MonoBehaviour
             GameData profileData = null;
             profilesGameData.TryGetValue(saveSlot.GetProfileId(), out profileData);
             saveSlot.SetData(profileData);
+        }
+    }
+
+    public void DeactivateMenu()
+    {
+        this.gameObject.SetActive(false);
+    }
+    
+    private void DisableMenuButtons()
+    {
+        foreach (SaveSlot saveSlot in saveSlots)
+        {
+            saveSlot.SetInteractable(false);
         }
     }
 }

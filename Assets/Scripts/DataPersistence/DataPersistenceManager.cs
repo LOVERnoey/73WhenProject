@@ -58,7 +58,13 @@ public class DataPersistenceManager : MonoBehaviour
         SaveGame();
     }
     
-
+    public void ChangeSelectedProfileId(string newProfileId)
+    {
+        this.selectedProfileId = newProfileId;
+        Debug.Log($"Selected Profile ID changed to: {selectedProfileId}");
+        LoadGame();
+    }
+    
     public void NewGame()
     {
         this.gameData = new GameData(); 
@@ -68,7 +74,7 @@ public class DataPersistenceManager : MonoBehaviour
     {
         this.gameData = dataHandler.Load(selectedProfileId);
         
-        if (this.gameData == null && !initializeDataifNull)
+        if (this.gameData == null && initializeDataifNull)
         {
             NewGame();
         }

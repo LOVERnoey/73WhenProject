@@ -4,15 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MainMenuManager : MonoBehaviour
+public class MainMenuManager : Menu
 {
     [Header("Menu Buttons")]
     [SerializeField] private Button newGameButton;
     [SerializeField] private Button continueGameButton; 
     
-    [SerializeField]
-    public GameObject mainButtonPanel;
-    public GameObject saveSlotsPanel;
+    [SerializeField] private GameObject mainButtonPanel;
+    [SerializeField] private GameObject saveSlotsPanel;
+    
+    [SerializeField] private SaveSlotsMenu saveSlotsMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +25,8 @@ public class MainMenuManager : MonoBehaviour
 
     public void OnNewGameClicked()
     {
-        DataPersistenceManager.instance.NewGame();
-        SceneManager.LoadSceneAsync("SaveLoad2");
+        saveSlotsMenu.ActivateMenu();
+        mainButtonPanel.SetActive(false);
     }
     
     public void OnLoadGameClicked()
@@ -41,6 +42,7 @@ public class MainMenuManager : MonoBehaviour
             if (saveSlotsPanel.activeSelf)
             {
                 saveSlotsPanel.SetActive(false);
+                mainButtonPanel.SetActive(true);
             }
             else
             {
@@ -48,4 +50,5 @@ public class MainMenuManager : MonoBehaviour
             }
         }
     }
+
 }
