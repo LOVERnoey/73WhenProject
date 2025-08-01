@@ -9,6 +9,7 @@ public class MainMenuManager : Menu
     [Header("Menu Buttons")]
     [SerializeField] private Button newGameButton;
     [SerializeField] private Button continueGameButton; 
+    [SerializeField] private Button loadGameButton;
     
     [SerializeField] private GameObject mainButtonPanel;
     [SerializeField] private GameObject saveSlotsPanel;
@@ -20,12 +21,19 @@ public class MainMenuManager : Menu
         if (!DataPersistenceManager.instance.HasGameData())
         {
             continueGameButton.interactable = false;
+            loadGameButton.interactable = false;
         }
     }
 
     public void OnNewGameClicked()
     {
-        saveSlotsMenu.ActivateMenu();
+        saveSlotsMenu.ActivateMenu(false);
+        mainButtonPanel.SetActive(false);
+    }
+    
+    public void OnloadGameClicked()
+    {
+        saveSlotsMenu.ActivateMenu(true);
         mainButtonPanel.SetActive(false);
     }
     

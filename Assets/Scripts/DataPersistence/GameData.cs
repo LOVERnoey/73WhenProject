@@ -5,6 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
+    public long lastUpdateted;
+    
     public int countTest;
     
     public Vector3  playerPosition;
@@ -19,21 +21,12 @@ public class GameData
         itemsCollected = new SerializableDictionary<string, bool>();    
     }
     
-    public int GetPercentageComplete()
+    public float GetPercentageComplete()
     {
-        int totalItems = itemsCollected.Count;
-        int collectedItems = 0;
+        int maxCount = 100;
         
-        foreach (var item in itemsCollected)
-        {
-            if (item.Value)
-            {
-                collectedItems++;
-            }
-        }
-        
-        if (totalItems == 0) return 0; // Avoid division by zero
-        
-        return (int)((float)collectedItems / totalItems * 100);
+        float percentage = (float)countTest / maxCount * 100f;
+
+        return percentage;
     }
 }
