@@ -83,28 +83,42 @@ public class FileDataHandler
     {
         Dictionary<string, GameData> profileDictionary = new Dictionary<string, GameData>();
         
-        IEnumerable<DirectoryInfo> dirInfos = new DirectoryInfo(dataDirPath).EnumerateDirectories();
-        foreach (DirectoryInfo dirInfo in dirInfos)
+        // Check if the data directory exists
+        if (!Directory.Exists(dataDirPath))
         {
-            string profileId = dirInfo.Name;
-            
-            string fullPath = Path.Combine(dataDirPath, profileId, dataFileName);
-            if (!File.Exists(fullPath))
+            Debug.LogWarning("Data directory does not exist: " + dataDirPath);
+            return profileDictionary;
+        }
+        
+        try
+        {
+            IEnumerable<DirectoryInfo> dirInfos = new DirectoryInfo(dataDirPath).EnumerateDirectories();
+            foreach (DirectoryInfo dirInfo in dirInfos)
             {
-                Debug.LogWarning("No save file found for profile: " + profileId);
-                continue;
-            }
-            
-            GameData profileDate = Load(profileId);
+                string profileId = dirInfo.Name;
+                
+                string fullPath = Path.Combine(dataDirPath, profileId, dataFileName);
+                if (!File.Exists(fullPath))
+                {
+                    Debug.LogWarning("No save file found for profile: " + profileId);
+                    continue;
+                }
+                
+                GameData profileData = Load(profileId);
 
-            if (profileDate != null)
-            {
-                profileDictionary.Add(profileId, profileDate);
+                if (profileData != null)
+                {
+                    profileDictionary.Add(profileId, profileData);
+                }
+                else
+                {
+                    Debug.LogWarning("Failed to load data for profile: " + profileId);
+                }
             }
-            else
-            {
-                Debug.LogWarning("No save file found for profile: " + profileId);
-            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Error occurred while loading profiles: " + e.Message);
         }
         
         return profileDictionary;
