@@ -8,6 +8,7 @@ public class SaveSlotsMenu : Menu
 {
     private SaveSlot[] saveSlots;
 
+    private bool isLoadingGame = false;
     private void Awake()
     {
         saveSlots = this.GetComponentsInChildren<SaveSlot>();
@@ -16,15 +17,20 @@ public class SaveSlotsMenu : Menu
     public void OnSaveSlotClicked(SaveSlot saveSlot)
     {
         DataPersistenceManager.instance.ChangeSelectedProfileId(saveSlot.GetProfileId());
-        
-        DataPersistenceManager.instance.NewGame();
+        if (!isLoadingGame)
+        {
+            DataPersistenceManager.instance.NewGame();
+        }
+
 
         SceneManager.LoadSceneAsync("SaveLoad2");
     }
     
-    public void ActivateMenu()
+    public void ActivateMenu(bool isLoadingGame)
     {
         this.gameObject.SetActive(true);
+        
+        this.isLoadingGame = isLoadingGame;
         
         Dictionary<string, GameData> profilesGameData = DataPersistenceManager.instance.GetAllProfilesGameData();
 
@@ -33,6 +39,14 @@ public class SaveSlotsMenu : Menu
             GameData profileData = null;
             profilesGameData.TryGetValue(saveSlot.GetProfileId(), out profileData);
             saveSlot.SetData(profileData);
+            if (profileData == null && isLoadingGame)
+            {
+                saveSlot.SetInteractable(false);
+            }
+            else
+            {
+                saveSlot.SetInteractable(true);
+            }
         }
     }
 

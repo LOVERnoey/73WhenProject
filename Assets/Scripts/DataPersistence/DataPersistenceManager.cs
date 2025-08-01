@@ -8,6 +8,9 @@ public class DataPersistenceManager : MonoBehaviour
 {
     [Header("Debugging")]
     [SerializeField] private bool initializeDataifNull = false;
+    [SerializeField] private bool disableDataPersistence = false;
+    [SerializeField] private bool overrideSelectedProfileId = false;
+    [SerializeField] private string testSelectedProfileId = "test";
     
     [Header("File Storage Config")]
     [SerializeField] private string fileName; 
@@ -18,7 +21,7 @@ public class DataPersistenceManager : MonoBehaviour
     private List<IDataPersistence> dataPersistenceObjects;
     private FileDataHandler dataHandler;
 
-    private string selectedProfileId = "test2";
+    private string selectedProfileId = "";
     public static DataPersistenceManager instance { get; private set; }
 
     private void Awake()
@@ -32,7 +35,18 @@ public class DataPersistenceManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(this.gameObject);
         
+        if (disableDataPersistence)
+        {
+            Debug.Log("Data Persistence is disabled.");
+        }   
+        
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
+        this.selectedProfileId = dataHandler.GetMostRecentlyUpdatedProfileId();
+
+        if (overrideSelectedProfileId)
+        {
+            this.selectedProfileId = testSelectedProfileId;
+        }
     }
 
     private void OnEnable()
@@ -72,6 +86,11 @@ public class DataPersistenceManager : MonoBehaviour
     
     public void LoadGame()
     {
+        if (disableDataPersistence)
+        {
+            Debug.Log("Data Persistence is disabled, skipping load.");
+            return;
+        }
         this.gameData = dataHandler.Load(selectedProfileId);
         
         if (this.gameData == null && initializeDataifNull)
@@ -93,6 +112,11 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void SaveGame()
     {
+        if (disableDataPersistence)
+        {
+            Debug.Log("Data Persistence is disabled, skipping load.");
+            return;
+        }
         if (this.gameData == null)
         {
             Debug.LogError("Game data is null, cannot save.");
@@ -102,6 +126,8 @@ public class DataPersistenceManager : MonoBehaviour
         {
             dataPersistenceObject.SaveData(ref gameData);
         }
+        
+        gameData.lastUpdateted = System.DateTime.Now.ToBinary();
         
         dataHandler.Save(gameData, selectedProfileId);
     }
