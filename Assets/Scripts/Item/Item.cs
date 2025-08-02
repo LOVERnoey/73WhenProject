@@ -56,7 +56,7 @@ public class Item : MonoBehaviour, IDataPersistence
         }
     }
     
-    public void SaveData(ref GameData gameData)
+    public void SaveData(GameData gameData)
     {
         if (gameData.itemsCollected.ContainsKey(id))
         {

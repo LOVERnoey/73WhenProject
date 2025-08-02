@@ -19,6 +19,7 @@ public class SceenTransition : MonoBehaviour
 
     public void ExitButton()
     {
+        Time.timeScale = 1f;   
         SceneManager.LoadScene("MainMenu");
     }
     

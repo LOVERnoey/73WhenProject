@@ -22,7 +22,7 @@ public class SaveSlotsMenu : Menu
             DataPersistenceManager.instance.NewGame();
         }
 
-
+        DataPersistenceManager.instance.SaveGame();
         SceneManager.LoadSceneAsync("SaveLoad2");
     }
     

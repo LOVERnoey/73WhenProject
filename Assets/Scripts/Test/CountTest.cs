@@ -16,7 +16,7 @@ public class CountTest : MonoBehaviour, IDataPersistence
         this.count = data.countTest;
     }
     
-    public void SaveData(ref GameData data)
+    public void SaveData(GameData data)
     {
         data.countTest = this.count;
     }

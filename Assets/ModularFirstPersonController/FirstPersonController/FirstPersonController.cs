@@ -203,12 +203,24 @@ public class FirstPersonController : MonoBehaviour, IDataPersistence
         #endregion
     }
 
+    public void InitializeMovement()
+    {
+        playerCanMove = true;
+        isGrounded = true;
+        isSprinting = false;
+        isCrouched = false;
+        sprintRemaining = sprintDuration;
+        sprintCooldown = sprintCooldownReset;
+        transform.localScale = originalScale; // Reset scale in case of crouch
+        playerCamera.fieldOfView = fov; // Reset FOV
+    }
+    
     public void LoadData(GameData data)
     {
         this.transform.position = data.playerPosition;
     }
     
-    public void SaveData(ref GameData data)
+    public void SaveData(GameData data)
     {
         data.playerPosition = this.transform.position;
     }
