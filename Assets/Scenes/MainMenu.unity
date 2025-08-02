@@ -2271,7 +2271,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1682718789}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: OnLoadGameClicked
+        m_MethodName: OnContinueGameClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

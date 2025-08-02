@@ -37,8 +37,10 @@ public class MainMenuManager : Menu
         mainButtonPanel.SetActive(false);
     }
     
-    public void OnLoadGameClicked()
+    public void OnContinueGameClicked()
     {
+        DataPersistenceManager.instance.SaveGame();
+        
         SceneManager.LoadSceneAsync("SaveLoad2");
     }
     
