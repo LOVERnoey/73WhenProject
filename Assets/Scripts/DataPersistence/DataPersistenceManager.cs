@@ -41,12 +41,8 @@ public class DataPersistenceManager : MonoBehaviour
         }   
         
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
-        this.selectedProfileId = dataHandler.GetMostRecentlyUpdatedProfileId();
 
-        if (overrideSelectedProfileId)
-        {
-            this.selectedProfileId = testSelectedProfileId;
-        }
+        InitializeSelectedProfileId();
     }
 
     private void OnEnable()
@@ -70,6 +66,25 @@ public class DataPersistenceManager : MonoBehaviour
         this.selectedProfileId = newProfileId;
         Debug.Log($"Selected Profile ID changed to: {selectedProfileId}");
         LoadGame();
+    }
+    
+    public void DeleteProfileData(string profileId)
+    {
+        dataHandler.Delete(profileId);
+        InitializeSelectedProfileId();
+        
+        LoadGame();
+        
+    }
+    
+    public void InitializeSelectedProfileId()
+    {
+        this.selectedProfileId = dataHandler.GetMostRecentlyUpdatedProfileId();
+
+        if (overrideSelectedProfileId)
+        {
+            this.selectedProfileId = testSelectedProfileId;
+        }
     }
     
     public void NewGame()
@@ -146,7 +161,13 @@ public class DataPersistenceManager : MonoBehaviour
 
     public bool HasGameData()
     {
-        return gameData != null;
+        if (gameData == null)
+        {
+            Debug.Log("Game data is null.");
+            return false;
+        }
+        Debug.Log("Game data exists.");
+        return true;
     }
 
     public Dictionary<string, GameData> GetAllProfilesGameData()

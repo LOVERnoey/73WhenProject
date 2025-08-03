@@ -18,13 +18,18 @@ public class MainMenuManager : Menu
     // Start is called before the first frame update
     void Start()
     {
+        DisableButtonsDependingOnData();
+    }
+
+    private void DisableButtonsDependingOnData()
+    {
         if (!DataPersistenceManager.instance.HasGameData())
         {
             continueGameButton.interactable = false;
             loadGameButton.interactable = false;
         }
     }
-
+    
     public void OnNewGameClicked()
     {
         saveSlotsMenu.ActivateMenu(false);
@@ -53,10 +58,7 @@ public class MainMenuManager : Menu
             {
                 saveSlotsPanel.SetActive(false);
                 mainButtonPanel.SetActive(true);
-            }
-            else
-            {
-                return;
+                DisableButtonsDependingOnData();
             }
         }
     }
