@@ -26,6 +26,12 @@ public class SaveSlotsMenu : Menu
         SceneManager.LoadSceneAsync("SaveLoad2");
     }
     
+    public void OnClearClicked(SaveSlot saveSlot)
+    {
+        DataPersistenceManager.instance.DeleteProfileData(saveSlot.GetProfileId());
+        ActivateMenu(isLoadingGame);
+    }
+    
     public void ActivateMenu(bool isLoadingGame)
     {
         this.gameObject.SetActive(true);

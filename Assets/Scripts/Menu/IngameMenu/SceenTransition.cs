@@ -21,6 +21,7 @@ public class SceenTransition : MonoBehaviour
     {
         Time.timeScale = 1f;   
         SceneManager.LoadScene("MainMenu");
+        DataPersistenceManager.instance.SaveGame();
     }
     
 }
