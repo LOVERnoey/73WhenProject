@@ -8,7 +8,11 @@ public class SaveSlotsMenu : Menu
 {
     private SaveSlot[] saveSlots;
 
+    [Header("Confirmation Popup")] [SerializeField]
+    private ConfirmationPopupMenu confirmationPopupMenu;
+
     private bool isLoadingGame = false;
+
     private void Awake()
     {
         saveSlots = this.GetComponentsInChildren<SaveSlot>();
@@ -16,28 +20,60 @@ public class SaveSlotsMenu : Menu
 
     public void OnSaveSlotClicked(SaveSlot saveSlot)
     {
-        DataPersistenceManager.instance.ChangeSelectedProfileId(saveSlot.GetProfileId());
-        if (!isLoadingGame)
+        if (isLoadingGame)
         {
-            DataPersistenceManager.instance.NewGame();
+            DataPersistenceManager.instance.ChangeSelectedProfileId(saveSlot.GetProfileId());
+            SaveGameAndLoadScene();
         }
+        else if (saveSlot.hasData)
+        {
+            confirmationPopupMenu.ActivateMenu(
+                "Starting a New Game with this slot will override the current save data. Are you sure?",
+                () =>
+                {
+                    DataPersistenceManager.instance.ChangeSelectedProfileId(saveSlot.GetProfileId());
+                    DataPersistenceManager.instance.NewGame();
+                    SaveGameAndLoadScene();
+                },
+                () => { this.ActivateMenu(isLoadingGame); }
+            );
+        }
+        else
+        {
+            DataPersistenceManager.instance.ChangeSelectedProfileId(saveSlot.GetProfileId());
+            DataPersistenceManager.instance.NewGame();
+            SaveGameAndLoadScene();
+        }
+    }
 
+    private void SaveGameAndLoadScene()
+    {
         DataPersistenceManager.instance.SaveGame();
         SceneManager.LoadSceneAsync("SaveLoad2");
     }
-    
+
     public void OnClearClicked(SaveSlot saveSlot)
     {
-        DataPersistenceManager.instance.DeleteProfileData(saveSlot.GetProfileId());
-        ActivateMenu(isLoadingGame);
+        confirmationPopupMenu.ActivateMenu(
+            "Are you sure you want to clear this save slot? This action cannot be undone.",
+            () =>
+            {
+                DataPersistenceManager.instance.DeleteProfileData(saveSlot.GetProfileId());
+                ActivateMenu(isLoadingGame);
+            },
+            () =>
+            {
+                ActivateMenu(isLoadingGame);
+            }
+        );
     }
-    
+
     public void ActivateMenu(bool isLoadingGame)
     {
         this.gameObject.SetActive(true);
-        
+
         this.isLoadingGame = isLoadingGame;
-        
+
         Dictionary<string, GameData> profilesGameData = DataPersistenceManager.instance.GetAllProfilesGameData();
 
         foreach (SaveSlot saveSlot in saveSlots)
@@ -60,7 +96,7 @@ public class SaveSlotsMenu : Menu
     {
         this.gameObject.SetActive(false);
     }
-    
+
     private void DisableMenuButtons()
     {
         foreach (SaveSlot saveSlot in saveSlots)

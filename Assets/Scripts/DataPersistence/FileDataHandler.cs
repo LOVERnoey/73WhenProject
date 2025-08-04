@@ -11,6 +11,7 @@ public class FileDataHandler
     private string dataFileName = "";
     private bool useEncryption = false;
     private readonly string encryptionCodeWord = "word";
+    private readonly string backupExtension = ".bak";
 
     public FileDataHandler(string dataDirPath, string dataFileName, bool useEncryption)
     {
@@ -19,7 +20,7 @@ public class FileDataHandler
         this.useEncryption = useEncryption;
     }
 
-    public GameData Load(string profileId)
+    public GameData Load(string profileId, bool allowRestoreFromBackup = true)
     {
         if (profileId == null)
         {
@@ -49,7 +50,19 @@ public class FileDataHandler
             }
             catch (Exception e)
             {
-                Debug.LogError("Error occurred while reading file: " + fullPath + "\n" + e);    
+                if (allowRestoreFromBackup)
+                {
+                    Debug.LogError("Error occurred while reading file: " + fullPath + "\n" + e);
+                    bool rollbackSuccess = AttemptRollback(fullPath);
+                    if (rollbackSuccess)
+                    {
+                        loadedData = Load(profileId, false);
+                    }
+                }
+                else
+                {
+                    Debug.LogError("Error occurred while reading file: " + fullPath + "\n" + e);
+                }
             }
         }
         return loadedData;
@@ -62,6 +75,7 @@ public class FileDataHandler
             return;
         }
         string fullPath = Path.Combine(dataDirPath, profileId, dataFileName);
+        string backupFilePath = fullPath + backupExtension;
         try
         {
             Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
@@ -79,6 +93,18 @@ public class FileDataHandler
                 {
                     writer.Write(dataToStore);
                 }
+            }
+            
+            GameData verifiedGameData = Load(profileId);
+
+            if (verifiedGameData != null)
+            {
+                File.Copy(fullPath, backupFilePath, true);
+            }
+
+            else
+            {
+                throw new Exception("Game data could not be saved.");
             }
         }
         catch (Exception e)
@@ -182,4 +208,28 @@ public class FileDataHandler
         return modifiedData;
     }
     
+    private bool AttemptRollback(string fullPath)
+    {
+        bool success = false;
+        string backupFilePath = fullPath + backupExtension;
+        try
+        {
+            if (File.Exists(backupFilePath))
+            {
+                File.Copy(backupFilePath, fullPath, true);
+                success = true;
+            }
+
+            else
+            {
+                throw new Exception("Backup file could not be saved.");
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Error occurred while attempting to backup file: " + fullPath + "\n" + e);
+        }
+        
+        return success;
+    }
 }
