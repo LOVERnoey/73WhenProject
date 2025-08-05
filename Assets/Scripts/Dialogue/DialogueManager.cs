@@ -5,7 +5,6 @@ using Ink.Runtime;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.PlayerLoop;
-using Ink.UnityIntegration;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -13,8 +12,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private float typingSpeed = 0.02f;
     [SerializeField] private bool canContinueLine = false;
     
-    [Header("Globals Ink File")]
-    [SerializeField] private InkFile globalsInkFile;
+    [Header("Globals Json File")]
+    [SerializeField] private TextAsset loadGlobalsJSON;
     
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
@@ -46,7 +45,7 @@ public class DialogueManager : MonoBehaviour
         }
         instance = this;
         
-        dialogueVariables = new DialogueVariables(globalsInkFile.filePath);
+        dialogueVariables = new DialogueVariables(loadGlobalsJSON);
     }
 
     public static DialogueManager GetInstance()

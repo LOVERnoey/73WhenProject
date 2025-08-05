@@ -3470,6 +3470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7338e6bec0ea5cc4b9c099bcd377d678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 
   itemName: Book's bas
   quantity: 1
   itemIcon: {fileID: 21300000, guid: 41dab0bd06169c04197ee618f1efa9e5, type: 3}
@@ -6465,6 +6466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7338e6bec0ea5cc4b9c099bcd377d678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 
   itemName: Axe
   quantity: 3
   itemIcon: {fileID: 21300000, guid: e9502ba90e4c78b4f86688c7f9f4c1ad, type: 3}
@@ -11237,6 +11239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7338e6bec0ea5cc4b9c099bcd377d678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 
   itemName: CheseBurger
   quantity: 1
   itemIcon: {fileID: 21300000, guid: 44fe90936dac86a40b6998118c4a7c23, type: 3}
@@ -13630,6 +13633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7338e6bec0ea5cc4b9c099bcd377d678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 
   itemName: Key
   quantity: 2
   itemIcon: {fileID: 21300000, guid: 634a2bc94a07a8d4296fd9b9c778eacc, type: 3}
@@ -13867,6 +13871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7338e6bec0ea5cc4b9c099bcd377d678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 
   itemName: Lighter
   quantity: 1
   itemIcon: {fileID: 21300000, guid: 8917fcc23373bf64b95c536ff237221d, type: 3}
@@ -19104,18 +19109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typingSpeed: 0.04
   canContinueLine: 0
-  globalsInkFile:
-    inkAsset: {fileID: 102900000, guid: 3f18127c57524274ebf72ad631690036, type: 3}
-    jsonAssetDirectory: {fileID: 0}
-    jsonAsset: {fileID: 0}
-    unhandledCompileErrors: []
-    recursiveIncludeErrorPaths: []
-    errors: []
-    warnings: []
-    todos: []
-    masterInkAssets: []
-    localIncludePaths: []
-    includes: []
+  loadGlobalsJSON: {fileID: 4900000, guid: ff51993502b7d68449d2eb732da3bcf0, type: 3}
   dialoguePanel: {fileID: 1311390406}
   dialogueText: {fileID: 1461813366}
   displayNameText: {fileID: 1494160744}
@@ -22263,6 +22257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7338e6bec0ea5cc4b9c099bcd377d678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 
   itemName: CheseBurger
   quantity: 70
   itemIcon: {fileID: 21300000, guid: 44fe90936dac86a40b6998118c4a7c23, type: 3}
