@@ -21,7 +21,7 @@ public class ConfirmationPopupMenu : MonoBehaviour
         confirmButton.onClick.RemoveAllListeners();
         cancelButton.onClick.RemoveAllListeners();
 
-        confirmButton.onClick.AddListener(() => {;
+        confirmButton.onClick.AddListener(() => {
             DeactivateMenu();
             confirmAction();
         });
