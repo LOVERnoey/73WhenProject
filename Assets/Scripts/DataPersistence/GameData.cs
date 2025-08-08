@@ -13,12 +13,19 @@ public class GameData
     
     public SerializableDictionary<string, bool>  itemsCollected;
 
+    public List<InventoryItemData> generalInventory;
+    public List<InventoryItemData> journalInventory;
+    public List<InventoryItemData> questInventory;
+
     
     public GameData()
     {
         this.countTest = 0;
         playerPosition = new Vector3(0, 0.5f, 0);
         itemsCollected = new SerializableDictionary<string, bool>();    
+        generalInventory = new List<InventoryItemData>();
+        journalInventory = new List<InventoryItemData>();
+        questInventory = new List<InventoryItemData>();
     }
     
     public float GetPercentageComplete()

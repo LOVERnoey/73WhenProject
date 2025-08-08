@@ -13,6 +13,7 @@ public class MainMenuManager : Menu
     
     [SerializeField] private GameObject mainButtonPanel;
     [SerializeField] private GameObject saveSlotsPanel;
+    [SerializeField] private GameObject confirmationMenu;
     
     [SerializeField] private SaveSlotsMenu saveSlotsMenu;
     // Start is called before the first frame update
@@ -54,7 +55,16 @@ public class MainMenuManager : Menu
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (saveSlotsPanel.activeSelf)
+            if (saveSlotsPanel.activeSelf && !confirmationMenu.activeSelf)
+            {
+                saveSlotsPanel.SetActive(false);
+                mainButtonPanel.SetActive(true);
+            }
+            else if (confirmationMenu.activeSelf)
+            {
+                confirmationMenu.SetActive(false);
+            }
+            else
             {
                 saveSlotsPanel.SetActive(false);
                 mainButtonPanel.SetActive(true);

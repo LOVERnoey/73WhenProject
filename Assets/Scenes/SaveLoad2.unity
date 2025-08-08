@@ -12935,10 +12935,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -1129696539382224580, guid: 7ed6488b4c2122848b77d614449bbf53, type: 2}
   m_audioClip: {fileID: 8300000, guid: fdec002965cdc9f458d4fad8c235c5ec, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -19359,18 +19359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typingSpeed: 0.04
   canContinueLine: 0
-  globalsInkFile:
-    inkAsset: {fileID: 102900000, guid: 3f18127c57524274ebf72ad631690036, type: 3}
-    jsonAssetDirectory: {fileID: 0}
-    jsonAsset: {fileID: 0}
-    unhandledCompileErrors: []
-    recursiveIncludeErrorPaths: []
-    errors: []
-    warnings: []
-    todos: []
-    masterInkAssets: []
-    localIncludePaths: []
-    includes: []
+  loadGlobalsJSON: {fileID: 4900000, guid: ff51993502b7d68449d2eb732da3bcf0, type: 3}
   dialoguePanel: {fileID: 1311390406}
   dialogueText: {fileID: 1461813366}
   displayNameText: {fileID: 1494160744}

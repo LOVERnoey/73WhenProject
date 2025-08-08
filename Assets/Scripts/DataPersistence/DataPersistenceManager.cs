@@ -16,6 +16,10 @@ public class DataPersistenceManager : MonoBehaviour
     [SerializeField] private string fileName; 
     [SerializeField] private bool useEncryption;
     
+    [SerializeField] private float autoSaveInterval = 60f;
+    
+   
+    private Coroutine autoSaveCoroutine;
     private GameData gameData;
     
     private List<IDataPersistence> dataPersistenceObjects;
@@ -59,6 +63,12 @@ public class DataPersistenceManager : MonoBehaviour
     {
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
         LoadGame();
+
+        if (autoSaveCoroutine != null)
+        {
+            StopCoroutine(autoSaveCoroutine);
+        }
+        autoSaveCoroutine = StartCoroutine(AutoSave());
     }
     
     public void ChangeSelectedProfileId(string newProfileId)
@@ -173,5 +183,15 @@ public class DataPersistenceManager : MonoBehaviour
     public Dictionary<string, GameData> GetAllProfilesGameData()
     {
         return dataHandler.LoadAllProfiles();
+    }
+
+    private IEnumerator AutoSave()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(autoSaveInterval);
+            SaveGame();
+            Debug.Log("Auto-saved game data.");
+        }
     }
 }

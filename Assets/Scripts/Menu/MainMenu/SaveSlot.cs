@@ -20,6 +20,8 @@ public class SaveSlot : MonoBehaviour
     
     private Button saveSlotButton;
     
+    public bool hasData { get; private set; } = false;
+    
     private void Awake()
     {
         saveSlotButton = this.GetComponent<Button>();
@@ -29,12 +31,14 @@ public class SaveSlot : MonoBehaviour
     {
         if (data == null)
         {
+            hasData = false;
             noDataContent.SetActive(true);
             hasDataContent.SetActive(false);
             clearButton.gameObject.SetActive(false);
         }
         else
         {
+            hasData = true;
             noDataContent.SetActive(false);
             hasDataContent.SetActive(true);
             clearButton.gameObject.SetActive(true);

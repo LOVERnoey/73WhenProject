@@ -1099,7 +1099,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &417673410
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1171,6 +1171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstSelected: {fileID: 750624372}
+  confirmationPopupMenu: {fileID: 1005347559}
 --- !u!1001 &437592231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2667,13 +2668,14 @@ GameObject:
   - component: {fileID: 1005347556}
   - component: {fileID: 1005347558}
   - component: {fileID: 1005347557}
+  - component: {fileID: 1005347559}
   m_Layer: 5
   m_Name: ConfirmationPopupMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1005347556
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2732,6 +2734,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1005347555}
   m_CullTransparentMesh: 1
+--- !u!114 &1005347559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005347555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe78ab4215ab7134784877d8d71af72c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayText: {fileID: 1769775269}
+  confirmButton: {fileID: 836131295}
+  cancelButton: {fileID: 811799134}
 --- !u!1 &1077571660
 GameObject:
   m_ObjectHideFlags: 0
@@ -3498,6 +3515,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4446262713332196098, guid: 5b683cb008ff12d48a40a6ac67d3bedd, type: 3}
+      propertyPath: autoSaveInterval
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6153983800163183928, guid: 5b683cb008ff12d48a40a6ac67d3bedd, type: 3}
       propertyPath: m_Name
       value: DataPersistenceManager
@@ -3837,6 +3858,7 @@ MonoBehaviour:
   loadGameButton: {fileID: 1810451267}
   mainButtonPanel: {fileID: 2055360511}
   saveSlotsPanel: {fileID: 417673409}
+  confirmationMenu: {fileID: 1005347555}
   saveSlotsMenu: {fileID: 417673413}
 --- !u!4 &1682718790
 Transform:
@@ -4898,7 +4920,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2055360512
 RectTransform:
   m_ObjectHideFlags: 0

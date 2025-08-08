@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class InventoryManager : MonoBehaviour
+public class InventoryManager : MonoBehaviour, IDataPersistence
 {
     public ItemSlot[] generalSlots;
     public ItemSlot[] journalSlots;
@@ -92,5 +92,115 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    
+    // IDataPersistence implementation
+    public void LoadData(GameData gameData)
+    {
+        if (gameData == null)
+        {
+            Debug.LogError("GameData is null in InventoryManager.LoadData");
+            return;
+        }
+        if (generalSlots == null || journalSlots == null || questItemSlots == null)
+        {
+            Debug.LogError("InventoryManager slot arrays are not assigned in the Inspector.");
+            return;
+        }
+        if (itemSOs == null)
+        {
+            Debug.LogError("InventoryManager itemSOs array is not assigned in the Inspector.");
+            return;
+        }
+        // Clear all slots
+        foreach (var slot in generalSlots) if (slot != null) slot.ClearSlot();
+        foreach (var slot in journalSlots) if (slot != null) slot.ClearSlot();
+        foreach (var slot in questItemSlots) if (slot != null) slot.ClearSlot();
+
+        // Helper to get Sprite from ItemSO by itemName
+        Sprite GetSprite(string name)
+        {
+            foreach (var so in itemSOs)
+                if (so != null && so.itemName == name)
+                    return so.GetSprite();
+            return null;
+        }
+
+        int i = 0;
+        foreach (var data in gameData.generalInventory)
+        {
+            if (i >= generalSlots.Length) break;
+            if (generalSlots[i] != null)
+                generalSlots[i].AddItem(data.itemName, data.quantity, GetSprite(data.itemName), data.itemDescription);
+            i++;
+        }
+        i = 0;
+        foreach (var data in gameData.journalInventory)
+        {
+            if (i >= journalSlots.Length) break;
+            if (journalSlots[i] != null)
+                journalSlots[i].AddItem(data.itemName, data.quantity, GetSprite(data.itemName), data.itemDescription);
+            i++;
+        }
+        i = 0;
+        foreach (var data in gameData.questInventory)
+        {
+            if (i >= questItemSlots.Length) break;
+            if (questItemSlots[i] != null)
+                questItemSlots[i].AddItem(data.itemName, data.quantity, GetSprite(data.itemName), data.itemDescription);
+            i++;
+        }
+    }
+
+    public void SaveData(GameData gameData)
+    {
+        if (gameData == null)
+        {
+            Debug.LogError("GameData is null in InventoryManager.SaveData");
+            return;
+        }
+        if (generalSlots == null || journalSlots == null || questItemSlots == null)
+        {
+            Debug.LogError("InventoryManager slot arrays are not assigned in the Inspector.");
+            return;
+        }
+        gameData.generalInventory.Clear();
+        gameData.journalInventory.Clear();
+        gameData.questInventory.Clear();
+        
+        foreach (var slot in generalSlots)
+        {
+            if (slot != null && !string.IsNullOrEmpty(slot.itemName) && slot.quantity > 0)
+            {
+                gameData.generalInventory.Add(new InventoryItemData {
+                    itemName = slot.itemName,
+                    quantity = slot.quantity,
+                    itemDescription = slot.itemDescription,
+                    itemType = ItemType.General
+                });
+            }
+        }
+        foreach (var slot in journalSlots)
+        {
+            if (slot != null && !string.IsNullOrEmpty(slot.itemName) && slot.quantity > 0)
+            {
+                gameData.journalInventory.Add(new InventoryItemData {
+                    itemName = slot.itemName,
+                    quantity = slot.quantity,
+                    itemDescription = slot.itemDescription,
+                    itemType = ItemType.Journal
+                });
+            }
+        }
+        foreach (var slot in questItemSlots)
+        {
+            if (slot != null && !string.IsNullOrEmpty(slot.itemName) && slot.quantity > 0)
+            {
+                gameData.questInventory.Add(new InventoryItemData {
+                    itemName = slot.itemName,
+                    quantity = slot.quantity,
+                    itemDescription = slot.itemDescription,
+                    itemType = ItemType.QuestItem
+                });
+            }
+        }
+    }
 }
