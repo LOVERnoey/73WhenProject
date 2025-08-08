@@ -17,6 +17,9 @@ public class GameData
     public List<InventoryItemData> journalInventory;
     public List<InventoryItemData> questInventory;
 
+    // Add daily checklist results for 11 days
+    public List<DailyChecklistResult> dailyChecklistResults;
+
     
     public GameData()
     {
@@ -26,6 +29,7 @@ public class GameData
         generalInventory = new List<InventoryItemData>();
         journalInventory = new List<InventoryItemData>();
         questInventory = new List<InventoryItemData>();
+        dailyChecklistResults = new List<DailyChecklistResult>();
     }
     
     public float GetPercentageComplete()
@@ -35,5 +39,23 @@ public class GameData
         float percentage = (float)countTest / maxCount * 100f;
 
         return percentage;
+    }
+}
+
+[System.Serializable]
+public class DailyChecklistResult
+{
+    public int day;
+    public int workersChecked;
+    public int workersTotal;
+    public int equipmentChecked;
+    public int equipmentTotal;
+    public int constructionQualityScore; // e.g. 0-100
+    public List<string> missedObstacles; // names of missed obstacles
+
+    public DailyChecklistResult(int day)
+    {
+        this.day = day;
+        missedObstacles = new List<string>();
     }
 }
