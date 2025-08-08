@@ -15,3 +15,4 @@ MonoBehaviour:
   itemName: CheseBurger
   statToChange: 0
   amountToChangeStat: 10
+  itemIcon: {fileID: 21300000, guid: 634a2bc94a07a8d4296fd9b9c778eacc, type: 3}

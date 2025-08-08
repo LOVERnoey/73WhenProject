@@ -8,6 +8,7 @@ public class ItemSO : ScriptableObject
     public string itemName;
     public StatToChange statToChange = new StatToChange();
     public int amountToChangeStat;
+    public Sprite itemIcon;
 
     public bool UseItem()
     {
@@ -30,11 +31,14 @@ public class ItemSO : ScriptableObject
         return false;
     }
 
-public enum StatToChange
+    public Sprite GetSprite()
+    {
+        return itemIcon;
+    }
+
+    public enum StatToChange
     {
         Health,
         Stamina,
     }
-    
-    
 }
