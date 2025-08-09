@@ -3899,6 +3899,8 @@ MonoBehaviour:
   itemPanel: {fileID: 1304351211}
   menu: {fileID: 582408608}
   mainMenu: {fileID: 1939822701}
+  checkListPanel: {fileID: 877341293}
+  dialoguePanel: {fileID: 1311390406}
   subMenus:
   - {fileID: 1224408135}
   - {fileID: 369716451}
@@ -8969,7 +8971,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 122.85712}
+  m_AnchoredPosition: {x: -230, y: -20}
   m_SizeDelta: {x: 100, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &815056616
@@ -9004,7 +9006,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: 20
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -9041,8 +9043,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aa5fb3c99914261a480e1613cd1cbe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workersRequired: 2
-  equipmentRequired: 3
+  workersRequired: 5
+  equipmentRequired: 0
   constructionRequired: 0
   allWorkerNames:
   - Somchai
@@ -9071,6 +9073,7 @@ MonoBehaviour:
   workerManager: {fileID: 1286565838}
   equipmentManager: {fileID: 317633960}
   constructionQualityManager: {fileID: 1323708372}
+  checklistUIManager: {fileID: 1321532567}
   currentDay: 1
 --- !u!4 &832817708
 Transform:
@@ -9539,7 +9542,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &877341294
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22140,7 +22143,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1875655506}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 832817707}
+        m_TargetAssemblyTypeName: CoreLoop.ChecklistManager, Assembly-CSharp
+        m_MethodName: SubmitChecklist
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1875655506
 MonoBehaviour:
   m_ObjectHideFlags: 0

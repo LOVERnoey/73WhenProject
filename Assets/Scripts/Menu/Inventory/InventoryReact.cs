@@ -1,25 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class InventoryReact : MonoBehaviour
 {
     public FirstPersonController firstPersonController;
     public GameObject inventoryUI;
-    public GameObject playerController; // ตัวที่มี script ควบคุมกล้อง/การเดิน
-    private bool isInventoryOpen = false;
+    public GameObject playerController;
     
+    [Header("Menu State")]
+    private bool isInventoryOpen = false;
+    private bool isCheckListOpen = false;
+    
+    [Header("UI Panels")]
     public GameObject journalPanel;
     public GameObject questItemPanel;
     public GameObject itemPanel;
     public GameObject menu;
     public GameObject mainMenu;
-    
+    public GameObject checkListPanel;
+    public GameObject dialoguePanel;
     public List<GameObject> subMenus;
     
+    [Header("Disable/Enable Things")]
     public List<GameObject> disableThings;
     public List<GameObject> enableThings;
-
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -48,8 +55,9 @@ public class InventoryReact : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
-            if (menu.activeSelf)
+            if (menu.activeSelf || isCheckListOpen || dialoguePanel.activeSelf)
             {
+                // ถ้าเมนูหลักหรือเช็คลิสต์เปิดอยู่ ไม่ทำอะไร
                 return;
             }
             else
@@ -66,6 +74,50 @@ public class InventoryReact : MonoBehaviour
                     itemPanel.SetActive(true);
                     journalPanel.SetActive(false);
                     questItemPanel.SetActive(false);
+                    
+                    firstPersonController.cameraCanMove = false;
+                    firstPersonController.playerCanMove = false;
+                    foreach (GameObject obj in disableThings)
+                    {
+                        obj.SetActive(false);
+                    }
+                    
+                    Time.timeScale = 0f; // หยุดเวลา (optional)
+                }
+                else
+                {
+                    // ล็อกเมาส์กลับและเปิดเกม
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+
+                    firstPersonController.cameraCanMove = true;
+                    firstPersonController.playerCanMove = true;
+                    foreach (GameObject obj in enableThings)
+                    {
+                        obj.SetActive(true);
+                    }
+                    
+                    Time.timeScale = 1f;
+                }   
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (menu.activeSelf || isInventoryOpen || dialoguePanel.activeSelf)
+            {
+                // ถ้าเมนูหลักหรืออินเวนทอรี่เปิดอยู่ ไม่ทำอะไร
+                return;
+            }
+            else
+            {
+                isCheckListOpen = !isCheckListOpen;
+                checkListPanel.SetActive(isCheckListOpen);
+
+                if (isCheckListOpen)
+                {
+                    // ปลดล็อกเมาส์และหยุดเกม
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
                     
                     firstPersonController.cameraCanMove = false;
                     firstPersonController.playerCanMove = false;
