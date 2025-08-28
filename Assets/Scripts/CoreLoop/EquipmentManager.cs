@@ -6,13 +6,29 @@ namespace CoreLoop
     public class EquipmentManager : MonoBehaviour
     {
         // Handles spawning and checking equipment
-        public GameObject equipmentPrefab; // Assign equipment prefab in inspector
-        private List<GameObject> spawnedEquipment = new List<GameObject>();
+        [System.Serializable]
+        public class EquipmentPrefabEntry
+        {
+            public string equipmentName;
+            public GameObject prefab;
+        }
+        public List<EquipmentPrefabEntry> equipmentPrefabs; // Assign in inspector
+        private Dictionary<string, GameObject> spawnedEquipment = new Dictionary<string, GameObject>();
+
+        private GameObject GetPrefabForEquipment(string equipmentName)
+        {
+            foreach (var entry in equipmentPrefabs)
+            {
+                if (entry.equipmentName == equipmentName)
+                    return entry.prefab;
+            }
+            return null;
+        }
 
         public void SpawnEquipment(List<string> equipmentList)
         {
             // Clear previous equipment
-            foreach (var eq in spawnedEquipment)
+            foreach (var eq in spawnedEquipment.Values)
             {
                 Destroy(eq);
             }
@@ -22,10 +38,18 @@ namespace CoreLoop
             foreach (var name in equipmentList)
             {
                 Vector3 spawnPos = new Vector3(Random.Range(5, 15), 0, Random.Range(-5, 5));
-                GameObject eq = Instantiate(equipmentPrefab, spawnPos, Quaternion.identity);
-                eq.name = name;
-                // Optionally set equipment display name here
-                spawnedEquipment.Add(eq);
+                GameObject prefab = GetPrefabForEquipment(name);
+                if (prefab != null)
+                {
+                    GameObject eq = Instantiate(prefab, spawnPos, Quaternion.identity);
+                    eq.name = name;
+                    // Optionally set equipment display name here
+                    spawnedEquipment.Add(name, eq);
+                }
+                else
+                {
+                    Debug.LogWarning($"No prefab found for equipment: {name}");
+                }
             }
         }
 
@@ -34,7 +58,7 @@ namespace CoreLoop
             int present = 0;
             foreach (var name in checklist)
             {
-                if (spawnedEquipment.Exists(e => e.name == name))
+                if (spawnedEquipment.ContainsKey(name))
                     present++;
             }
             return present;
