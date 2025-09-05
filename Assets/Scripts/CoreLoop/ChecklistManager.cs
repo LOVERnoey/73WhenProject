@@ -31,6 +31,8 @@ namespace CoreLoop
         public ChecklistUIManager checklistUIManager; // Assign in Inspector
         public int currentDay = 1;
 
+        [Header("Checklist Mode")] public bool useAllItems = true; // if true, no random selection
+
         void Start()
         {
             StartDay();
@@ -40,6 +42,17 @@ namespace CoreLoop
         
         public void GenerateChecklist(int day)
         {
+            if (useAllItems)
+            {
+                workersToCheck = new List<string>(allWorkerNames);
+                equipmentToCheck = new List<string>(allEquipment);
+                constructionSitesToCheck = new List<string>(allConstructionSites);
+                obstacles = new List<string>(allObstacles); // or leave empty if not needed
+                workersRequired = workersToCheck.Count;
+                equipmentRequired = equipmentToCheck.Count;
+                constructionRequired = constructionSitesToCheck.Count;
+                return;
+            }
             // Increase difficulty by day
             workersRequired = Mathf.Min(2 + day, allWorkerNames.Count);
             equipmentRequired = Mathf.Min(2 + day, allEquipment.Count);

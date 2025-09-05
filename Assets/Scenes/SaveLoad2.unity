@@ -3458,8 +3458,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentPrefabs:
-  - equipmentName: 
-    prefab: {fileID: 0}
+  - equipmentName: Hammer
+    prefab: {fileID: 919132149155446097, guid: 13739fc33529ab34c809ea3fbcd4f65f, type: 3}
+    x: 11
+    y: 1
+    z: 21
 --- !u!4 &317633961
 Transform:
   m_ObjectHideFlags: 0
@@ -9045,8 +9048,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aa5fb3c99914261a480e1613cd1cbe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workersRequired: 5
-  equipmentRequired: 0
+  workersRequired: 4
+  equipmentRequired: 4
   constructionRequired: 0
   allWorkerNames:
   - Somchai
@@ -9077,6 +9080,7 @@ MonoBehaviour:
   constructionQualityManager: {fileID: 1323708372}
   checklistUIManager: {fileID: 1321532567}
   currentDay: 1
+  useAllItems: 1
 --- !u!4 &832817708
 Transform:
   m_ObjectHideFlags: 0
@@ -12923,6 +12927,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bottle3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 13739fc33529ab34c809ea3fbcd4f65f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14610,18 +14618,39 @@ MonoBehaviour:
   workerPrefabs:
   - workerName: Somchai
     prefab: {fileID: 1796685979}
+    x: 4.01
+    y: 1
+    z: 11
   - workerName: Nattapong
     prefab: {fileID: 505113137}
+    x: 9
+    y: 1
+    z: 12
   - workerName: Suda
     prefab: {fileID: 1014096795}
+    x: 21
+    y: 1
+    z: 3
   - workerName: Kanya
     prefab: {fileID: 2141795013}
+    x: 12
+    y: 1
+    z: 7
   - workerName: Prasit
     prefab: {fileID: 736831858}
+    x: 21
+    y: 1
+    z: 21
   - workerName: Wirote
     prefab: {fileID: 239872811}
+    x: 2
+    y: 1
+    z: 5
   - workerName: Malee
     prefab: {fileID: 543898991}
+    x: 7
+    y: 1
+    z: 21
 --- !u!4 &1286565839
 Transform:
   m_ObjectHideFlags: 0
@@ -16080,6 +16109,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 92259a1306ad7c442b4ef402b1c21b95, type: 3}
       propertyPath: m_Name
       value: Bottle
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92259a1306ad7c442b4ef402b1c21b95, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
