@@ -28,16 +28,31 @@ namespace CoreLoop
         public WorkerManager workerManager;
         public EquipmentManager equipmentManager;
         public ConstructionQualityManager constructionQualityManager;
+        public ChecklistUIManager checklistUIManager; // Assign in Inspector
         public int currentDay = 1;
+
+        [Header("Checklist Mode")] public bool useAllItems = true; // if true, no random selection
 
         void Start()
         {
             StartDay();
+            ShowChecklistPanel();
             Debug.Log("Starting Day " + currentDay);
         }
         
         public void GenerateChecklist(int day)
         {
+            if (useAllItems)
+            {
+                workersToCheck = new List<string>(allWorkerNames);
+                equipmentToCheck = new List<string>(allEquipment);
+                constructionSitesToCheck = new List<string>(allConstructionSites);
+                obstacles = new List<string>(allObstacles); // or leave empty if not needed
+                workersRequired = workersToCheck.Count;
+                equipmentRequired = equipmentToCheck.Count;
+                constructionRequired = constructionSitesToCheck.Count;
+                return;
+            }
             // Increase difficulty by day
             workersRequired = Mathf.Min(2 + day, allWorkerNames.Count);
             equipmentRequired = Mathf.Min(2 + day, allEquipment.Count);
@@ -64,8 +79,14 @@ namespace CoreLoop
 
         public void ShowChecklistPanel()
         {
-            // TODO: Implement UI logic to show checklist panel and allow player to check items
-            Debug.Log("Checklist Panel Opened");
+            // Show all possible items, not just spawned ones
+            List<string> checklistItems = new List<string>();
+            checklistItems.AddRange(allWorkerNames);
+            checklistItems.AddRange(allEquipment);
+            checklistItems.AddRange(allConstructionSites);
+            checklistUIManager.ShowChecklist($"Day {currentDay} Checklist", checklistItems, (checkedItems) => {
+                Debug.Log("Checked: " + string.Join(", ", checkedItems));
+            });
         }
 
         // Call this to start a new day
@@ -81,25 +102,49 @@ namespace CoreLoop
         // Call this to submit checklist and save results
         public void SubmitChecklist()
         {
-            int workersChecked = workerManager.CheckWorkerAttendance(workersToCheck);
-            int equipmentChecked = equipmentManager.CheckEquipment(equipmentToCheck);
-            int constructionScore = constructionQualityManager.CheckConstructionQuality(constructionSitesToCheck);
+            List<string> checkedItems = checklistUIManager.GetCheckedItems();
+            int score = 0;
+
+            // Combine all spawned items
+            List<string> allSpawned = new List<string>();
+            allSpawned.AddRange(workersToCheck);
+            allSpawned.AddRange(equipmentToCheck);
+            allSpawned.AddRange(constructionSitesToCheck);
+
+            // +1 for each correctly checked spawned item, -1 for each missed spawned item
+            foreach (var item in allSpawned)
+            {
+                if (checkedItems.Contains(item))
+                    score += 1;
+                else
+                    score -= 1;
+            }
+
+            // -1 for each checked item that was NOT spawned
+            foreach (var checkedItem in checkedItems)
+            {
+                if (!allSpawned.Contains(checkedItem))
+                    score -= 1;
+            }
+
+            Debug.Log($"Checklist Score: {score}");
             // For demo, assume all obstacles missed
             List<string> missedObstacles = new List<string>(obstacles);
 
             var result = new DailyChecklistResult(currentDay)
             {
-                workersChecked = workersChecked,
+                workersChecked = workerManager.CheckWorkerAttendance(workersToCheck),
                 workersTotal = workersToCheck.Count,
-                equipmentChecked = equipmentChecked,
+                equipmentChecked = equipmentManager.CheckEquipment(equipmentToCheck),
                 equipmentTotal = equipmentToCheck.Count,
-                constructionQualityScore = constructionScore,
+                constructionQualityScore = constructionQualityManager.CheckConstructionQuality(constructionSitesToCheck),
                 missedObstacles = missedObstacles
             };
             // Save to GameData (pseudo, replace with your save system)
             // GameData.Instance.dailyChecklistResults.Add(result);
-            Debug.Log($"Day {currentDay} Results: Workers {workersChecked}/{workersToCheck.Count}, Equipment {equipmentChecked}/{equipmentToCheck.Count}, Quality {constructionScore}");
+            Debug.Log($"Day {currentDay} Results: Workers {result.workersChecked}/{result.workersTotal}, Equipment {result.equipmentChecked}/{result.equipmentTotal}, Quality {result.constructionQualityScore}");
             currentDay++;
+            
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
@@ -33,6 +34,7 @@ namespace CoreLoop
                 var toggle = go.GetComponentInChildren<Toggle>();
                 var label = go.GetComponentInChildren<Text>();
                 label.text = item;
+                toggle.isOn = false; // Ensure toggle is unchecked by default
                 itemToggles.Add(toggle);
             }
             submitButton.onClick.RemoveAllListeners();

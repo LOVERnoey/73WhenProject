@@ -11,54 +11,67 @@ namespace CoreLoop
         {
             public string workerName;
             public GameObject prefab;
+            public float x; // set in Inspector
+            public float y = 0f; // vertical offset
+            public float z; // set in Inspector
         }
         public List<WorkerPrefabEntry> workerPrefabs; // Assign in inspector
-        private Dictionary<string, GameObject> spawnedWorkers = new Dictionary<string, GameObject>();
+        private readonly Dictionary<string, GameObject> spawnedWorkers = new Dictionary<string, GameObject>();
 
-        private GameObject GetPrefabForWorker(string workerName)
-        {
-            foreach (var entry in workerPrefabs)
-            {
-                if (entry.workerName == workerName)
-                    return entry.prefab;
-            }
-            return null;
-        }
+        private WorkerPrefabEntry FindEntry(string workerName) => workerPrefabs.Find(e => e.workerName == workerName);
 
         public void SpawnWorkers(List<string> namesToSpawn)
         {
-            // Clear previous workers
-            foreach (var worker in spawnedWorkers.Values)
+            // Clear previous so scene contains exactly the checklist workers
+            foreach (var w in spawnedWorkers.Values)
             {
-                Destroy(worker);
+                if (w) Destroy(w);
             }
             spawnedWorkers.Clear();
-
-            // Spawn new workers
-            foreach (var workerName in namesToSpawn)
+            foreach (var name in namesToSpawn)
             {
-                Vector3 spawnPos = new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5));
-                GameObject prefab = GetPrefabForWorker(workerName);
-                if (prefab != null)
-                {
-                    GameObject worker = Instantiate(prefab, spawnPos, Quaternion.identity);
-                    worker.name = workerName;
-                    // Optionally set NPC display name here
-                    spawnedWorkers.Add(workerName, worker);
-                }
-                else
-                {
-                    Debug.LogWarning($"No prefab found for worker: {workerName}");
-                }
+                SpawnSingle(name, replaceIfExists: true);
             }
+        }
+
+        public void EnsureWorkersSpawned(List<string> names)
+        {
+            foreach (var name in names)
+            {
+                if (!spawnedWorkers.ContainsKey(name))
+                    SpawnSingle(name, replaceIfExists: false);
+            }
+        }
+
+        private void SpawnSingle(string name, bool replaceIfExists)
+        {
+            if (spawnedWorkers.ContainsKey(name))
+            {
+                if (!replaceIfExists) return;
+                var existing = spawnedWorkers[name];
+                if (existing) Destroy(existing);
+                spawnedWorkers.Remove(name);
+            }
+            var entry = FindEntry(name);
+            if (entry == null || entry.prefab == null)
+            {
+                Debug.LogWarning($"[WorkerManager] Missing entry or prefab for '{name}'");
+                return;
+            }
+            Vector3 pos = new Vector3(entry.x, entry.y, entry.z);
+            var worker = Instantiate(entry.prefab, pos, Quaternion.identity);
+            worker.name = name;
+            spawnedWorkers[name] = worker;
+            Debug.Log($"[WorkerManager] Spawned '{name}' at {pos}");
         }
 
         public int CheckWorkerAttendance(List<string> checklist)
         {
+            EnsureWorkersSpawned(checklist);
             int present = 0;
             foreach (var name in checklist)
             {
-                if (spawnedWorkers.ContainsKey(name))
+                if (spawnedWorkers.ContainsKey(name) && spawnedWorkers[name] != null)
                     present++;
             }
             return present;
